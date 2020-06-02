@@ -239,7 +239,7 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("沒有帳號密碼?", style: kTextDarkColor),
+                            Text("沒有帳號密碼?", style:TextStyle(color: kTextDarkColor)),
                             CreateAccountButton(
                                 userRepository: _userRepository),
                           ],
