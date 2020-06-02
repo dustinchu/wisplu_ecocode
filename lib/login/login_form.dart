@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../common/styles/constants.dart';
 import '../widget/animation_button.dart';
 import '../user_repository.dart';
 import '../authentication_bloc/authentication_bloc.dart';
 import '../login/login.dart';
 import '.././common/styles/colors.dart';
-import 'package:flutter_signin_button/flutter_signin_button.dart';
+
 class LoginForm extends StatefulWidget {
   final UserRepository _userRepository;
 
@@ -155,10 +155,11 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Text("忘記密碼？", style: TextStyle(color:kLoginTextColor),
-                              // style: TextStyle(
-                              //     color: Color.fromRGBO(195, 159, 43, 1)),
-                              )
+                          Text(
+                            "忘記密碼？", style: TextStyle(color: kLoginTextColor),
+                            // style: TextStyle(
+                            //     color: Color.fromRGBO(195, 159, 43, 1)),
+                          )
                         ],
                       ),
                     ),
@@ -199,22 +200,39 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
                             ],
                           ),
                         ),
-                        Row(
+                        Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            SignInButton(
-                              Buttons.Google,
-                              mini: true,
-                              onPressed: () {
-                                 BlocProvider.of<LoginBloc>(context)
-                                  .add(LoginWithGooglePressed());
-                              },
-                            ),
-                            SignInButton(
-                              Buttons.Facebook,
-                              mini: true,
-                              onPressed: () {},
-                            ),
+                            GoogleSignInButton(
+                              onPressed: () {/* ... */},
+                              darkMode: false,
+                              borderRadius: 30.0,
+                              splashColor: Colors.white,
+                              text: "Google", // default: false
+                            )
+                            // IconButton(
+                            //     // Use the FaIcon Widget + FontAwesomeIcons class for the IconData
+                            //     icon: FaIcon(FontAwesomeIcons.google,
+                            //         color: Colors.redAccent),
+                            //     onPressed: () {}),
+                            // IconButton(
+                            //     // Use the FaIcon Widget + FontAwesomeIcons class for the IconData
+                            //     icon: FaIcon(FontAwesomeIcons.facebook,
+                            //         color: Colors.blueAccent),
+                            //     onPressed: () {}),
+                            // SignInButton(
+                            //   Buttons.Google,
+                            //   mini: true,
+                            //   onPressed: () {
+                            //      BlocProvider.of<LoginBloc>(context)
+                            //       .add(LoginWithGooglePressed());
+                            //   },
+                            // ),
+                            // SignInButton(
+                            //   Buttons.Facebook,
+                            //   mini: true,
+                            //   onPressed: () {},
+                            // ),
                           ],
                         ),
 
@@ -239,7 +257,8 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("沒有帳號密碼?", style:TextStyle(color: kTextDarkColor)),
+                            Text("沒有帳號密碼?",
+                                style: TextStyle(color: kTextDarkColor)),
                             CreateAccountButton(
                                 userRepository: _userRepository),
                           ],

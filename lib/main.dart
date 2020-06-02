@@ -36,13 +36,12 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        // primaryTextTheme: Typography(platform: TargetPlatform.iOS).white,
-        // textTheme: Typography(platform: TargetPlatform.iOS).white,
+          // primaryTextTheme: Typography(platform: TargetPlatform.iOS).white,
+          // textTheme: Typography(platform: TargetPlatform.iOS).white,
 
-        textTheme: GoogleFonts.openSansTextTheme()
-      ),
-      home: HomeScreen(),
-      // home:LoginScreen(userRepository: _userRepository),
+          textTheme: GoogleFonts.openSansTextTheme()),
+      // home: HomeScreen(),
+      home:LoginScreen(userRepository: _userRepository),
       // home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
       //   builder: (context, state) {
       //     if (state is AuthenticationFailure) {
