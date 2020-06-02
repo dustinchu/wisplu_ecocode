@@ -155,7 +155,7 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Text("忘記密碼？", style: kLoginTextColor
+                          Text("忘記密碼？", style: TextStyle(color:kLoginTextColor),
                               // style: TextStyle(
                               //     color: Color.fromRGBO(195, 159, 43, 1)),
                               )

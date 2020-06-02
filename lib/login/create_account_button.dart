@@ -16,7 +16,7 @@ class CreateAccountButton extends StatelessWidget {
     return InkWell(
       child: Text(
         '申請帳號',
-        style: kLoginTextColor,
+        style: TextStyle(color:kLoginTextColor),
       ),
       onTap: () {
         Navigator.of(context).push(
