@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../user_repository.dart';
 import '../login/login.dart';
-import '../styles/constants.dart';
+import '../common/styles/constants.dart';
 class LoginScreen extends StatelessWidget {
   final UserRepository _userRepository;
 
@@ -14,12 +14,14 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-        backgroundColor: Colors.transparent,
-        body: BlocProvider<LoginBloc>(
-          create: (context) => LoginBloc(userRepository: _userRepository),
-          child: LoginForm(userRepository: _userRepository),
-        ),
+    return  SafeArea(
+          child: Scaffold(
+          backgroundColor: Colors.transparent,
+          body: BlocProvider<LoginBloc>(
+            create: (context) => LoginBloc(userRepository: _userRepository),
+            child: LoginForm(userRepository: _userRepository),
+          ),
+      ),
     );
   }
 }

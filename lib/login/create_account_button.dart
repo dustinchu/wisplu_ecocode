@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../user_repository.dart';
 import '../register/register.dart';
+import '.././common/styles/colors.dart';
 
 class CreateAccountButton extends StatelessWidget {
   final UserRepository _userRepository;
@@ -12,11 +13,12 @@ class CreateAccountButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
+    return InkWell(
       child: Text(
-        'Create an Account',
+        '申請帳號',
+        style: kLoginTextColor,
       ),
-      onPressed: () {
+      onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(builder: (context) {
             return RegisterScreen(userRepository: _userRepository);

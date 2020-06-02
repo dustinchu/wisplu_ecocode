@@ -78,8 +78,8 @@ class StaggerAnimation extends StatelessWidget {
                     titleButton,
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.w300,
+                      fontSize: 14.0,
+                      // fontWeight: FontWeight.w300,
                       letterSpacing: 0.3,
                     ),
                   )

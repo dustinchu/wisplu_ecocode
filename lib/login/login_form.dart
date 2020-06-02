@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:wisplu_ecocode/styles/constants.dart';
+import '../common/styles/constants.dart';
+import '../widget/animation_button.dart';
 import '../user_repository.dart';
 import '../authentication_bloc/authentication_bloc.dart';
 import '../login/login.dart';
-import 'button.dart';
-
+import '.././common/styles/colors.dart';
+import 'package:flutter_signin_button/flutter_signin_button.dart';
 class LoginForm extends StatefulWidget {
   final UserRepository _userRepository;
 
@@ -94,7 +95,8 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
                   children: <Widget>[
                     Padding(
                       padding: EdgeInsets.only(top: 10),
-                      child: Image.asset('assets/brandLogo.png', height: 150),
+                      child: Image.asset('assets/brandLogo.png',
+                          height: MediaQuery.of(context).size.width / 4),
                     ),
                     Center(
                       child: Text(
@@ -153,11 +155,10 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Text(
-                            "忘記密碼？",
-                            style: TextStyle(
-                                color: Color.fromRGBO(195, 159, 43, 1)),
-                          )
+                          Text("忘記密碼？", style: kLoginTextColor
+                              // style: TextStyle(
+                              //     color: Color.fromRGBO(195, 159, 43, 1)),
+                              )
                         ],
                       ),
                     ),
@@ -198,25 +199,51 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
                             ],
                           ),
                         ),
-                        StaggerAnimation(
-                            titleButton: "使用GOOGLE帳號登入",
-                            buttonController: _loginButtonController.view,
-                            iconStatus: true,
-                            iconButton: FontAwesomeIcons.google,
-                            onTap: () {
-                              BlocProvider.of<LoginBloc>(context)
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SignInButton(
+                              Buttons.Google,
+                              mini: true,
+                              onPressed: () {
+                                 BlocProvider.of<LoginBloc>(context)
                                   .add(LoginWithGooglePressed());
-                            }),
-                            StaggerAnimation(
-                            titleButton: "使用FACEBOOK帳號登入",
-                            buttonController: _loginButtonController.view,
-                            iconStatus: true,
-                            iconButton: FontAwesomeIcons.facebook,
-                            onTap: () {
-                              BlocProvider.of<LoginBloc>(context)
-                                  .add(LoginWithGooglePressed());
-                            }),
-                        CreateAccountButton(userRepository: _userRepository),
+                              },
+                            ),
+                            SignInButton(
+                              Buttons.Facebook,
+                              mini: true,
+                              onPressed: () {},
+                            ),
+                          ],
+                        ),
+
+                        // StaggerAnimation(
+                        //     titleButton: "GOOGLE帳號登入",
+                        //     buttonController: _loginButtonController.view,
+                        //     iconStatus: true,
+                        //     iconButton: FontAwesomeIcons.google,
+                        //     onTap: () {
+                        //       BlocProvider.of<LoginBloc>(context)
+                        //           .add(LoginWithGooglePressed());
+                        //     }),
+                        //     StaggerAnimation(
+                        //     titleButton: "FACEBOOK帳號登入",
+                        //     buttonController: _loginButtonController.view,
+                        //     iconStatus: true,
+                        //     iconButton: FontAwesomeIcons.facebook,
+                        //     onTap: () {
+                        //       BlocProvider.of<LoginBloc>(context)
+                        //           .add(LoginWithGooglePressed());
+                        //     }),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text("沒有帳號密碼?", style: kTextDarkColor),
+                            CreateAccountButton(
+                                userRepository: _userRepository),
+                          ],
+                        ),
                       ],
                     ),
                   ],
