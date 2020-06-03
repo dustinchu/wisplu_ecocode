@@ -97,7 +97,7 @@ class _HomeFormState extends State<HomeForm> {
           gradient: kScaffoldBackgroundGradient,
         ),
         child: Padding(
-          padding: EdgeInsets.only(top: 20, bottom: 20, left: 50, right: 50),
+          padding: EdgeInsets.only(top: 20, bottom: 20, left: 50, right: 20),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             _appbar(),

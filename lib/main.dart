@@ -39,8 +39,8 @@ class App extends StatelessWidget {
           // textTheme: Typography(platform: TargetPlatform.iOS).white,
 
           textTheme: GoogleFonts.openSansTextTheme()),
-      // home: HomeScreen(),
-      home:LoginScreen(userRepository: _userRepository),
+      home: HomeScreen(),
+      // home:LoginScreen(userRepository: _userRepository),
       // home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
       //   builder: (context, state) {
       //     if (state is AuthenticationFailure) {

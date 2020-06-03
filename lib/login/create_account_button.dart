@@ -15,7 +15,7 @@ class CreateAccountButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       child: Text(
-        '申請帳號',
+        '立即註冊',
         style: TextStyle(color:kLoginTextColor),
       ),
       onTap: () {
