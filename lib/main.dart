@@ -7,7 +7,6 @@ import 'page/home/home_screen.dart';
 import 'user_repository.dart';
 // import 'home_screen.dart';
 import 'login/login.dart';
-import 'splash_screen.dart';
 import 'bloc_delegate.dart';
 
 void main() {

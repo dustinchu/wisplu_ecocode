@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
+// import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../common/styles/constants.dart';
 import '../widget/animation_button.dart';
@@ -7,6 +7,8 @@ import '../user_repository.dart';
 import '../authentication_bloc/authentication_bloc.dart';
 import '../login/login.dart';
 import '.././common/styles/colors.dart';
+import 'facebook_login_button.dart';
+import 'google_login_button.dart';
 
 class LoginForm extends StatefulWidget {
   final UserRepository _userRepository;
@@ -167,7 +169,11 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: <Widget>[
                         StaggerAnimation(
-                          titleButton: "登入",
+                          borderColor: Colors.white,
+                          color: Colors.transparent,
+                          circular: 0,
+                          text: "登入",
+                          textColor: Colors.white,
                           buttonController: _loginButtonController.view,
                           onTap: isLoginButtonEnabled(state)
                               ? _onFormSubmitted
@@ -200,60 +206,16 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
                             ],
                           ),
                         ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            GoogleSignInButton(
-                              onPressed: () {/* ... */},
-                              darkMode: false,
-                              borderRadius: 30.0,
-                              splashColor: Colors.white,
-                              text: "Google", // default: false
-                            )
-                            // IconButton(
-                            //     // Use the FaIcon Widget + FontAwesomeIcons class for the IconData
-                            //     icon: FaIcon(FontAwesomeIcons.google,
-                            //         color: Colors.redAccent),
-                            //     onPressed: () {}),
-                            // IconButton(
-                            //     // Use the FaIcon Widget + FontAwesomeIcons class for the IconData
-                            //     icon: FaIcon(FontAwesomeIcons.facebook,
-                            //         color: Colors.blueAccent),
-                            //     onPressed: () {}),
-                            // SignInButton(
-                            //   Buttons.Google,
-                            //   mini: true,
-                            //   onPressed: () {
-                            //      BlocProvider.of<LoginBloc>(context)
-                            //       .add(LoginWithGooglePressed());
-                            //   },
-                            // ),
-                            // SignInButton(
-                            //   Buttons.Facebook,
-                            //   mini: true,
-                            //   onPressed: () {},
-                            // ),
-                          ],
+                        GoogleLoginButton(
+                          onTap: null,
+                          buttonController: _loginButtonController.view,
                         ),
-
-                        // StaggerAnimation(
-                        //     titleButton: "GOOGLE帳號登入",
-                        //     buttonController: _loginButtonController.view,
-                        //     iconStatus: true,
-                        //     iconButton: FontAwesomeIcons.google,
-                        //     onTap: () {
-                        //       BlocProvider.of<LoginBloc>(context)
-                        //           .add(LoginWithGooglePressed());
-                        //     }),
-                        //     StaggerAnimation(
-                        //     titleButton: "FACEBOOK帳號登入",
-                        //     buttonController: _loginButtonController.view,
-                        //     iconStatus: true,
-                        //     iconButton: FontAwesomeIcons.facebook,
-                        //     onTap: () {
-                        //       BlocProvider.of<LoginBloc>(context)
-                        //           .add(LoginWithGooglePressed());
-                        //     }),
+                        SizedBox(height: 10),
+                        FacebookLoginButton(
+                          onTap: null,
+                          buttonController: _loginButtonController.view,
+                        ),
+                        SizedBox(height: 10),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [

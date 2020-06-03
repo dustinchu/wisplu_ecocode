@@ -3,16 +3,23 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class StaggerAnimation extends StatelessWidget {
   final VoidCallback onTap;
-  final String titleButton;
-  final IconData iconButton;
+  final String text;
+  final String iconPath;
   final bool iconStatus;
-
+  final double circular;
+  final Color color;
+  final Color textColor;
+  final Color borderColor;
   StaggerAnimation({
     Key key,
-    this.buttonController,
-    this.onTap,
-    this.titleButton = "Sign In",
-    this.iconButton = FontAwesomeIcons.google,
+    @required this.color,
+    @required this.circular,
+    @required this.buttonController,
+    @required this.onTap,
+    @required this.text = "Sign In",
+    @required this.textColor,
+    @required this.borderColor,
+    this.iconPath = "assets/google-logo.png",
     this.iconStatus = false,
   })  : buttonSqueezeanimation = Tween(
           begin: 320.0,
@@ -53,9 +60,9 @@ class StaggerAnimation extends StatelessWidget {
         height: 50,
         alignment: FractionalOffset.center,
         decoration: new BoxDecoration(
-          border: new Border.all(color: Colors.white, width: 0.5), // 边色与边宽度
-          color: Colors.transparent, // 底色
-          //        borderRadius: new BorderRadius.circular((20.0)), // 圆角度
+          border: new Border.all(color: borderColor, width: 0.5), // 邊色寬度
+          color: color, // 底色
+          borderRadius: new BorderRadius.circular((circular)), // 圆角度
         ),
         // decoration: BoxDecoration(
         // color: Theme.of(context).primaryColor,
@@ -68,17 +75,20 @@ class StaggerAnimation extends StatelessWidget {
                   iconStatus
                       ? Padding(
                           padding: EdgeInsets.only(left: 10, right: 10),
-                          child: Icon(
-                            FontAwesomeIcons.google,
-                            color: Colors.white,
+                          child: Image.asset(
+                            iconPath,
+                            height: 18.0,
+                            width: 18.0,
                           ),
                         )
                       : Container(),
                   Text(
-                    titleButton,
+                    text,
                     style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14.0,
+                      color: textColor,
+                      fontSize: 18.0,
+                      fontFamily: "Roboto",
+                      fontWeight: FontWeight.w500,
                       // fontWeight: FontWeight.w300,
                       letterSpacing: 0.3,
                     ),
