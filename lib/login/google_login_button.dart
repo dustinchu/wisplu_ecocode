@@ -30,7 +30,7 @@ class GoogleLoginButton extends StatelessWidget {
 
   GoogleLoginButton(
       {@required this.onTap, @required this.buttonController, Key key})
-      : assert(onTap != null),
+      :
         super(key: key);
 
   @override

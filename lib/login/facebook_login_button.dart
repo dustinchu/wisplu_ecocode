@@ -7,8 +7,7 @@ class FacebookLoginButton extends StatelessWidget {
 
   FacebookLoginButton(
       {@required this.onTap, @required this.buttonController, Key key})
-      : assert(onTap != null),
-        super(key: key);
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

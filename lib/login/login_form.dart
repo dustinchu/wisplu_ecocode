@@ -9,6 +9,7 @@ import '../login/login.dart';
 import '.././common/styles/colors.dart';
 import 'facebook_login_button.dart';
 import 'google_login_button.dart';
+import 'login_TextFormField.dart';
 
 class LoginForm extends StatefulWidget {
   final UserRepository _userRepository;
@@ -109,49 +110,69 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
                     SizedBox(
                       height: 30,
                     ),
-                    TextFormField(
+                    LoginTextFormField(
                       controller: _emailController,
-                      decoration: InputDecoration(
-                        filled: true, //背景是否填充
-                        fillColor: Color.fromRGBO(255, 255, 255, 0.1),
-                        prefixIcon: Icon(
-                          Icons.email,
-                          color: Colors.white,
-                        ),
-                        hintText: 'Email',
-                        hintStyle: new TextStyle(color: Colors.white),
-                      ),
-                      keyboardType: TextInputType.emailAddress,
-                      autovalidate: true,
-                      autocorrect: false,
+                      icon: Icons.email,
+                      iconColor: Colors.white,
+                      hintText: "Email",
                       validator: (_) {
                         return !state.isEmailValid ? 'Invalid Email' : null;
                       },
                     ),
+                    // TextFormField(
+                    //   controller: _emailController,
+                    //   decoration: InputDecoration(
+                    //     filled: true, //背景是否填充
+                    //     fillColor: Color.fromRGBO(255, 255, 255, 0.1),
+                    //     prefixIcon: Icon(
+                    //       Icons.email,
+                    //       color: Colors.white,
+                    //     ),
+                    //     hintText: 'Email',
+                    //     hintStyle: new TextStyle(color: Colors.white),
+                    //   ),
+                    //   keyboardType: TextInputType.emailAddress,
+                    //   autovalidate: true,
+                    //   autocorrect: false,
+                    //   validator: (_) {
+                    //     return !state.isEmailValid ? 'Invalid Email' : null;
+                    //   },
+                    // ),
                     SizedBox(
                       height: 20,
                     ),
-                    TextFormField(
+                    LoginTextFormField(
                       controller: _passwordController,
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(
-                          Icons.lock,
-                          color: Colors.white,
-                        ),
-                        filled: true, //背景是否填充
-                        fillColor: Color.fromRGBO(255, 255, 255, 0.1),
-                        hintText: "password",
-                        hintStyle: new TextStyle(color: Colors.white),
-                      ),
-                      obscureText: true,
-                      autovalidate: true,
-                      autocorrect: false,
+                      icon: Icons.lock,
+                      iconColor: Colors.white,
+                      hintText: "password",
                       validator: (_) {
                         return !state.isPasswordValid
                             ? 'Invalid Password'
                             : null;
                       },
                     ),
+                    // TextFormField(
+                    //   controller: _passwordController,
+                    //   decoration: InputDecoration(
+                    //     prefixIcon: Icon(
+                    //       Icons.lock,
+                    //       color: Colors.white,
+                    //     ),
+                    //     filled: true, //背景是否填充
+                    //     fillColor: Color.fromRGBO(255, 255, 255, 0.1),
+                    //     hintText: "password",
+                    //     hintStyle: new TextStyle(color: Colors.white),
+                    //   ),
+                    //   obscureText: true,
+                    //   autovalidate: true,
+                    //   autocorrect: false,
+                    //   validator: (_) {
+                    //     return !state.isPasswordValid
+                    //         ? 'Invalid Password'
+                    //         : null;
+                    //   },
+                    // ),
                     Padding(
                       padding: EdgeInsets.only(top: 10, bottom: 10),
                       child: Row(
