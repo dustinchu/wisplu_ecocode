@@ -65,7 +65,9 @@ class _HomeFormState extends State<HomeForm> {
               ),
             ],
           ),
-          SizedBox(width: 20,),
+          SizedBox(
+            width: 20,
+          ),
           Container(
             decoration: ShapeDecoration(
               color: Colors.blueAccent[200],
@@ -78,12 +80,13 @@ class _HomeFormState extends State<HomeForm> {
               ],
             ),
             child: Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Column(children: [
-                Text('目前電價', style: TextStyle(color: Colors.white)),
-                Text('22.5', style: TextStyle(color: Colors.white)),
-              ],)
-            ),
+                padding: EdgeInsets.all(16.0),
+                child: Column(
+                  children: [
+                    Text('目前電價', style: TextStyle(color: Colors.white)),
+                    Text('22.5', style: TextStyle(color: Colors.white)),
+                  ],
+                )),
           ),
         ],
       );
@@ -95,17 +98,18 @@ class _HomeFormState extends State<HomeForm> {
         ),
         child: Padding(
           padding: EdgeInsets.only(top: 20, bottom: 20, left: 50, right: 50),
-          child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             _appbar(),
             SizedBox(
               height: 40,
             ),
             _titleMessage(),
-            Padding
-            (padding:EdgeInsets.only(left:3,top:20,bottom:20),
-           child: Text("使用中裝置", style: TextStyle(color: Colors.white24,fontSize:20)),),
+            Padding(
+              padding: EdgeInsets.only(left: 3, top: 20, bottom: 20),
+              child: Text("使用中裝置",
+                  style: TextStyle(color: Colors.white24, fontSize: 20)),
+            ),
             CustomElevation(
               child: FlatButton(
                 color: Colors.blue,
