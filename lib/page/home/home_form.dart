@@ -93,31 +93,85 @@ class _HomeFormState extends State<HomeForm> {
     }
 
     return Container(
-        decoration: BoxDecoration(
-          gradient: kScaffoldBackgroundGradient,
-        ),
-        child: Padding(
-          padding: EdgeInsets.only(top: 20, bottom: 20, left: 50, right: 20),
-          child:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            _appbar(),
-            SizedBox(
-              height: 40,
+      padding: EdgeInsets.only(top: 20, bottom: 20, left: 20, right: 20),
+      decoration: BoxDecoration(
+        gradient: kScaffoldBackgroundGradient,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _appbar(),
+          SizedBox(
+            height: 40,
+          ),
+          _titleMessage(),
+          Padding(
+            padding: EdgeInsets.only(left: 3, top: 20, bottom: 20),
+            child: Text("使用中裝置",
+                style: TextStyle(color: Colors.white24, fontSize: 20)),
+          ),
+          CustomElevation(
+            child: FlatButton(
+              color: Colors.blue,
+              onPressed: () {},
+              child: Text('Custom Elevation'),
             ),
-            _titleMessage(),
-            Padding(
-              padding: EdgeInsets.only(left: 3, top: 20, bottom: 20),
-              child: Text("使用中裝置",
-                  style: TextStyle(color: Colors.white24, fontSize: 20)),
+          ),
+          Expanded(
+            child: ListView.builder(
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              itemCount: 4,
+              itemBuilder: (context, position) {
+                return Container(
+                  padding: EdgeInsets.only(bottom: 10),
+                  height: 100,
+                  child: Row(
+                    children: [
+                      Container(
+                        color: Colors.blueAccent[200],
+                        width: 3,
+                        height: 60,
+                      ),
+                      Expanded(
+                          flex: 1,
+                          child: Container(
+                            color: Colors.black12,
+                            child: Row(
+                              children: [
+                                Column(
+                                  children: [
+                                    Text("2313213213"),
+                                    Text("2313213213")
+                                  ],
+                                ),
+                                Text("2313213213"),
+                                Text("2313213213"),
+                                Text("2313213213")
+                              ],
+                            ),
+                          ))
+                    ],
+                  ),
+                  // Card(
+                  //   color: Colors.black12,
+                  //   elevation: 0.0,
+                  //   child: Padding(
+                  //     padding: EdgeInsets.only(left: 15,right:15),
+                  //     child: Row(
+                  //       children: [
+                  //         Icon(Icons.access_alarm),
+                  //         Icon(Icons.rotate_right),
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
+                );
+              },
             ),
-            CustomElevation(
-              child: FlatButton(
-                color: Colors.blue,
-                onPressed: () {},
-                child: Text('Custom Elevation'),
-              ),
-            )
-          ]),
-        ));
+          )
+        ],
+      ),
+    );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wisplu_ecocode/register/register_screen.dart';
 import '../common/styles/constants.dart';
 import '../widget/animation_button.dart';
 import '../user_repository.dart';
@@ -99,7 +100,7 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
                     Padding(
                       padding: EdgeInsets.only(top: 10),
                       child: Image.asset('assets/brandLogo.png',
-                          height: MediaQuery.of(context).size.width / 4+20),
+                          height: MediaQuery.of(context).size.width / 4 + 20),
                     ),
                     Center(
                       child: Text(
@@ -228,7 +229,10 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
                           ),
                         ),
                         GoogleLoginButton(
-                          onTap: null,
+                          onTap: () {
+                            BlocProvider.of<LoginBloc>(context)
+                                .add(LoginWithGooglePressed());
+                          },
                           buttonController: _loginButtonController.view,
                         ),
                         SizedBox(height: 10),
@@ -243,7 +247,15 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
                             Text("沒有帳號密碼?",
                                 style: TextStyle(color: kTextDarkColor)),
                             CreateAccountButton(
-                                userRepository: _userRepository),
+                                text: "立即註冊",
+                                onTap: () {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(builder: (context) {
+                                      return RegisterScreen(
+                                          userRepository: _userRepository);
+                                    }),
+                                  );
+                                }),
                           ],
                         ),
                       ],
