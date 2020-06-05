@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:wisplu_ecocode/widget/tooltipShapeBorder.dart';
 import '../../common/styles/colors.dart';
@@ -108,14 +109,7 @@ class _HomeFormState extends State<HomeForm> {
           Padding(
             padding: EdgeInsets.only(left: 3, top: 20, bottom: 20),
             child: Text("使用中裝置",
-                style: TextStyle(color: Colors.white24, fontSize: 20)),
-          ),
-          CustomElevation(
-            child: FlatButton(
-              color: Colors.blue,
-              onPressed: () {},
-              child: Text('Custom Elevation'),
-            ),
+                style: TextStyle(color: Colors.white24, fontSize: 15)),
           ),
           Expanded(
             child: ListView.builder(
@@ -128,44 +122,77 @@ class _HomeFormState extends State<HomeForm> {
                   height: 100,
                   child: Row(
                     children: [
-                      Container(
-                        color: Colors.blueAccent[200],
-                        width: 3,
-                        height: 60,
+                      Column(
+                        children: [
+                          SizedBox(height:5),
+                          Container(
+
+                            color: Colors.blueAccent[200],
+                            width: 3,
+                            height: 40,
+                          ),
+                        ],
                       ),
                       Expanded(
                           flex: 1,
                           child: Container(
                             color: Colors.black12,
-                            child: Row(
-                              children: [
-                                Column(
-                                  children: [
-                                    Text("2313213213"),
-                                    Text("2313213213")
-                                  ],
-                                ),
-                                Text("2313213213"),
-                                Text("2313213213"),
-                                Text("2313213213")
-                              ],
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 20, right: 20),
+                              child: Row(
+                                children: [
+                                  Image.asset(
+                                    "assets/bed.png",
+                                    height: 45.0,
+                                    width: 45.0,
+                                  ),
+                                  SizedBox(
+                                    width: 30,
+                                  ),
+                                  Expanded(
+                                    flex: 1,
+                                    child: Row(
+                                      children: [
+                                        Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text("客廳",
+                                                style: TextStyle(
+                                                    color: Colors.white)),
+                                            Text("使用中",
+                                                style: TextStyle(
+                                                    color:
+                                                        Colors.blueAccent[200]))
+                                          ],
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              left: 30, right: 30, bottom: 25),
+                                          child: Text("nt",
+                                              style: TextStyle(
+                                                  color: Colors.white)),
+                                        ),
+                                        Text(
+                                          "600.35",
+                                          style: TextStyle(
+                                              fontSize: 25,
+                                              color: Colors.white),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Icon(
+                                    Icons.keyboard_arrow_right,
+                                    color: Colors.white,
+                                  )
+                                ],
+                              ),
                             ),
                           ))
                     ],
                   ),
-                  // Card(
-                  //   color: Colors.black12,
-                  //   elevation: 0.0,
-                  //   child: Padding(
-                  //     padding: EdgeInsets.only(left: 15,right:15),
-                  //     child: Row(
-                  //       children: [
-                  //         Icon(Icons.access_alarm),
-                  //         Icon(Icons.rotate_right),
-                  //       ],
-                  //     ),
-                  //   ),
-                  // ),
                 );
               },
             ),
