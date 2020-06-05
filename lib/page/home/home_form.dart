@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../page/home/home_appbar.dart';
-import '../../widget/tooltipShapeBorder.dart';
-import '../../common/styles/colors.dart';
 import '../../common/styles/constants.dart';
 import 'home_listView_card.dart';
 import 'home_title_msg.dart';
