@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../user_repository.dart';
+import '../../bloc/login/bloc.dart';
+import '../../user_repository.dart';
 import '../login/login.dart';
-import '../common/styles/constants.dart';
+import '../../common/styles/constants.dart';
 class LoginScreen extends StatelessWidget {
   final UserRepository _userRepository;
 

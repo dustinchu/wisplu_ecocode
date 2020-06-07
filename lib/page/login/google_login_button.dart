@@ -22,7 +22,7 @@
 //   }
 // }
 import 'package:flutter/material.dart';
-import '../widget/animation_button.dart';
+import '../../widget/animation_button.dart';
 
 class GoogleLoginButton extends StatelessWidget {
   final VoidCallback onTap;

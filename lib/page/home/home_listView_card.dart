@@ -19,7 +19,7 @@ class HomeListViewCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(bottom: 10),
-      height: 100,
+      height: 90,
       child: Row(
         children: [
           Column(

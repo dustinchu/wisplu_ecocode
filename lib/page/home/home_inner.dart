@@ -58,9 +58,6 @@ class HomeInner extends StatelessWidget {
                                 size: 18,
                               ),
                               onTap: onTap,
-                              // onTap: () {
-                              //   _innerDrawerKey.currentState.toggle();
-                              // },
                             ),
                           ),
                         ],

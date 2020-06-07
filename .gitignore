@@ -8,7 +8,7 @@
 .buildlog/
 .history
 .svn/
-
+*.pilst
 # IntelliJ related
 *.iml
 *.ipr
@@ -43,3 +43,4 @@ app.*.map.json
 # Exceptions to above rules.
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 android/app/google-services.json
+ios/Runner/GoogleService-Info.plist

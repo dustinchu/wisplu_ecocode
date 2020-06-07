@@ -2,7 +2,8 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
-import '../user_repository.dart';
+
+import '../../user_repository.dart';
 
 part 'authentication_event.dart';
 part 'authentication_state.dart';
@@ -22,22 +23,30 @@ class AuthenticationBloc
   Stream<AuthenticationState> mapEventToState(
     AuthenticationEvent event,
   ) async* {
-    if (event is AuthenticationStarted) {
-      yield* _mapAuthenticationStartedToState();
-    } else if (event is AuthenticationLoggedIn) {
-      yield* _mapAuthenticationLoggedInToState();
-    } else if (event is AuthenticationLoggedOut) {
-      yield* _mapAuthenticationLoggedOutToState();
+    try {
+      if (event is AuthenticationStarted) {
+        yield* _mapAuthenticationStartedToState();
+      } else if (event is AuthenticationLoggedIn) {
+        yield* _mapAuthenticationLoggedInToState();
+      } else if (event is AuthenticationLoggedOut) {
+        yield* _mapAuthenticationLoggedOutToState();
+      }
+    } catch (e) {
+      print("ERROR===${e}");
     }
   }
 
   Stream<AuthenticationState> _mapAuthenticationStartedToState() async* {
-    final isSignedIn = await _userRepository.isSignedIn();
-    if (isSignedIn) {
-      final name = await _userRepository.getUser();
-      yield AuthenticationSuccess(name);
-    } else {
-      yield AuthenticationFailure();
+    try {
+      final isSignedIn = await _userRepository.isSignedIn();
+      if (isSignedIn) {
+        final name = await _userRepository.getUser();
+        yield AuthenticationSuccess(name);
+      } else {
+        yield AuthenticationFailure();
+      }
+    } catch (e) {
+      print("123213=====${e}");
     }
   }
 

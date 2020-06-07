@@ -3,8 +3,8 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:rxdart/rxdart.dart';
 import '../../user_repository.dart';
-import '.././register.dart';
-import '../../validators.dart';
+import '../../common/utif/validators.dart';
+import 'bloc.dart';
 
 class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   final UserRepository _userRepository;

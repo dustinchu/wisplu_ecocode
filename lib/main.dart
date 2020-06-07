@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'authentication_bloc/authentication_bloc.dart';
+import 'bloc/authentication_bloc/authentication_bloc.dart';
 import 'page/home/home_screen.dart';
+import 'page/login/login.dart';
 import 'splash_screen.dart';
 import 'user_repository.dart';
-// import 'home_screen.dart';
-import 'login/login.dart';
-import 'bloc_delegate.dart';
+import 'common/utif/bloc_delegate.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
