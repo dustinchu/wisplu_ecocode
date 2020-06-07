@@ -5,7 +5,9 @@ import 'home_listView_card.dart';
 import 'home_title_msg.dart';
 
 class HomeForm extends StatefulWidget {
-  HomeForm({Key key}) : super(key: key);
+  final VoidCallback appbarCallback;
+
+  HomeForm({@required this.appbarCallback, key}) : super(key: key);
 
   @override
   _HomeFormState createState() => _HomeFormState();
@@ -50,7 +52,7 @@ class _HomeFormState extends State<HomeForm> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           HomeAppbar(
-            onPressed: null,
+            onPressed: widget.appbarCallback,
           ),
           SizedBox(
             height: 40,

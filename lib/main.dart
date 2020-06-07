@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'authentication_bloc/authentication_bloc.dart';
 import 'page/home/home_screen.dart';
+import 'splash_screen.dart';
 import 'user_repository.dart';
 // import 'home_screen.dart';
 import 'login/login.dart';
@@ -39,19 +40,20 @@ class App extends StatelessWidget {
           // textTheme: Typography(platform: TargetPlatform.iOS).white,
 
           textTheme: GoogleFonts.openSansTextTheme()),
-      home: HomeScreen(),
+      // home: HomeScreen(),
       // home:LoginScreen(userRepository: _userRepository),
-      // home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
-      //   builder: (context, state) {
-      //     if (state is AuthenticationFailure) {
-      //       return LoginScreen(userRepository: _userRepository);
-      //     }
-      //     if (state is AuthenticationSuccess) {
-      //       return HomeScreen(name: state.displayName);
-      //     }
-      //     return SplashScreen();
-      //   },
-      // ),
+      home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
+        builder: (context, state) {
+          if (state is AuthenticationFailure) {
+            return LoginScreen(userRepository: _userRepository);
+          }
+          if (state is AuthenticationSuccess) {
+            // return HomeScreen(name: state.displayName);
+            return HomeScreen();
+          }
+          return SplashScreen();
+        },
+      ),
     );
   }
 }

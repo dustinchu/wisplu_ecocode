@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'authentication_bloc/authentication_bloc.dart';
 
-class HomeScreen extends StatelessWidget {
+class THomeScreen extends StatelessWidget {
   final String name;
 
-  HomeScreen({Key key, @required this.name}) : super(key: key);
+  THomeScreen({Key key, @required this.name}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

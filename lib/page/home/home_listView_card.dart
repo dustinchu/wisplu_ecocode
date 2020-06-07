@@ -8,11 +8,10 @@ class HomeListViewCard extends StatelessWidget {
   final String switchTotleMoney;
 
   HomeListViewCard(
-      {
-      @required this.switchStatus,
+      {@required this.switchStatus,
       @required this.iconPath,
       @required this.positionName,
-       @required this.switchTotleMoney,
+      @required this.switchTotleMoney,
       Key key})
       : super(key: key);
 
@@ -27,7 +26,7 @@ class HomeListViewCard extends StatelessWidget {
             children: [
               SizedBox(height: 5),
               Container(
-                color: switchStatus ? kSwitchOnColor:kSwitchOffColor,
+                color: switchStatus ? kSwitchOnColor : kSwitchOffColor,
                 width: 3,
                 height: 40,
               ),
@@ -60,17 +59,22 @@ class HomeListViewCard extends StatelessWidget {
                                     style: TextStyle(color: Colors.white)),
                                 Text(switchStatus ? "使用中" : "未使用",
                                     style: TextStyle(
-                                        color: switchStatus ?Colors.blueAccent[200]:Colors.white54))
+                                        color: switchStatus
+                                            ? Colors.blueAccent[200]
+                                            : Colors.white54))
                               ],
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 30, right: 30, bottom: 25),
+                              padding: MediaQuery.of(context).size.width < 390
+                                  ? const EdgeInsets.only(
+                                      left: 20, right: 20, bottom: 25)
+                                  : const EdgeInsets.only(
+                                      left: 30, right: 30, bottom: 25),
                               child: Text("nt",
                                   style: TextStyle(color: Colors.white)),
                             ),
                             Text(
-                             switchTotleMoney,
+                              switchTotleMoney,
                               style:
                                   TextStyle(fontSize: 25, color: Colors.white),
                             ),
