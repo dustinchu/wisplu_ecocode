@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../generated/l10n.dart';
 import '../../bloc/authentication_bloc/authentication_bloc.dart';
 import '../../bloc/login/bloc.dart';
 import '../register/register_screen.dart';
@@ -60,7 +61,12 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
               SnackBar(
                 content: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [Text('Login Failure'), Icon(Icons.error)],
+                  children: [
+                    Text(
+                      S.of(context).loginFalse,
+                    ),
+                    Icon(Icons.error)
+                  ],
                 ),
                 backgroundColor: Colors.red,
               ),
@@ -74,7 +80,9 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
                 content: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('Logging In...'),
+                    Text(
+                      S.of(context).loginTrue,
+                    ),
                     CircularProgressIndicator(),
                   ],
                 ),
@@ -118,7 +126,9 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
                       iconColor: Colors.white,
                       hintText: "Email",
                       validator: (_) {
-                        return !state.isEmailValid ? 'Invalid Email' : null;
+                        return !state.isEmailValid
+                            ? S.of(context).loginTextFormEmail
+                            : null;
                       },
                     ),
                     // TextFormField(
@@ -150,7 +160,7 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
                       hintText: "password",
                       validator: (_) {
                         return !state.isPasswordValid
-                            ? 'Invalid Password'
+                            ? S.of(context).loginTextFormPassword
                             : null;
                       },
                     ),
@@ -181,7 +191,8 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Text(
-                            "忘記密碼？", style: TextStyle(color: kLoginTextColor),
+                            S.of(context).loginForgotPassword,
+                            style: TextStyle(color: kLoginTextColor),
                             // style: TextStyle(
                             //     color: Color.fromRGBO(195, 159, 43, 1)),
                           )
@@ -195,7 +206,7 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
                           borderColor: Colors.white,
                           color: Colors.transparent,
                           circular: 0,
-                          text: "登入",
+                          text: S.of(context).loginButton,
                           textColor: Colors.white,
                           buttonController: _loginButtonController.view,
                           onTap: isLoginButtonEnabled(state)
@@ -215,7 +226,7 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
                               Padding(
                                 padding: EdgeInsets.only(left: 20, right: 20),
                                 child: Text(
-                                  "使用其他方式登入",
+                                  S.of(context).loginOther,
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 15),
                                 ),
@@ -230,6 +241,7 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
                           ),
                         ),
                         GoogleLoginButton(
+                          text: S.of(context).loginGoogleButton,
                           onTap: () {
                             BlocProvider.of<LoginBloc>(context)
                                 .add(LoginWithGooglePressed());
@@ -238,6 +250,7 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
                         ),
                         SizedBox(height: 10),
                         FacebookLoginButton(
+                          text:S.of(context).loginFacebookButton,
                           onTap: null,
                           buttonController: _loginButtonController.view,
                         ),
@@ -245,10 +258,10 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("沒有帳號密碼?",
+                            Text(S.of(context).loginNoAccount,
                                 style: TextStyle(color: kTextColor)),
                             CreateAccountButton(
-                                text: "立即註冊",
+                                text: S.of(context).loginSignIn,
                                 onTap: () {
                                   Navigator.of(context).push(
                                     MaterialPageRoute(builder: (context) {

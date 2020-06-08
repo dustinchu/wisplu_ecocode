@@ -1,0 +1,15 @@
+{
+    "simpleText": "嗨TW",
+    "loginTrue":"登入成功",
+    "loginFalse":"登入發生錯誤",
+    "loginTextFormEmail":"無效的信箱格式",
+    "loginTextFormPassword":"密碼請包含英文大小寫",
+    "loginForgetPassword":"密碼請包含英文大小寫",
+    "loginButton":"登入",
+    "loginOther":"使用其他方式登入",
+    "loginGoogleButton":"Google",
+    "loginFacebookButton":"Facebook",
+    "loginForgotPassword":"忘記密碼?",
+    "loginNoAccount":"沒有帳號密碼?",
+    "loginSignIn":"立即註冊"
+}

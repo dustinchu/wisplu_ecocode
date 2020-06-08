@@ -27,9 +27,9 @@ import '../../widget/animation_button.dart';
 class GoogleLoginButton extends StatelessWidget {
   final VoidCallback onTap;
   final AnimationController buttonController;
-
+  final String text;
   GoogleLoginButton(
-      {@required this.onTap, @required this.buttonController, Key key})
+      {@required this.onTap, @required this.buttonController,@required this.text, Key key})
       : super(key: key);
 
   @override
@@ -38,7 +38,7 @@ class GoogleLoginButton extends StatelessWidget {
         color: Colors.white,
         borderColor: Colors.white,
         circular: 30,
-        text: "Google",
+        text: text,
         textColor: Colors.black.withOpacity(0.54),
         buttonController: buttonController.view,
         iconPath: "assets/google-logo.png",
