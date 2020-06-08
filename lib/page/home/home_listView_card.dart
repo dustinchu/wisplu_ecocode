@@ -65,11 +65,11 @@ class HomeListViewCard extends StatelessWidget {
                               ],
                             ),
                             Padding(
-                              padding: MediaQuery.of(context).size.width < 390
+                              padding: MediaQuery.of(context).size.width < 400
                                   ? const EdgeInsets.only(
-                                      left: 20, right: 20, bottom: 25)
+                                      left: 10, right: 10, bottom: 25)
                                   : const EdgeInsets.only(
-                                      left: 30, right: 30, bottom: 25),
+                                      left: 25, right: 25, bottom: 25),
                               child: Text("nt",
                                   style: TextStyle(color: Colors.white)),
                             ),

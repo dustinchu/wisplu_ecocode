@@ -21,18 +21,18 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
-    "loginButton" : MessageLookupByLibrary.simpleMessage("登入"),
-    "loginFacebookButton" : MessageLookupByLibrary.simpleMessage("Facebook"),
-    "loginFalse" : MessageLookupByLibrary.simpleMessage("登入發生錯誤"),
-    "loginForgetPassword" : MessageLookupByLibrary.simpleMessage("密碼請包含英文大小寫"),
+    "loginButton" : MessageLookupByLibrary.simpleMessage("en登入"),
+    "loginFacebookButton" : MessageLookupByLibrary.simpleMessage("enFacebook"),
+    "loginFalse" : MessageLookupByLibrary.simpleMessage("en登入發生錯誤"),
+    "loginForgetPassword" : MessageLookupByLibrary.simpleMessage("ene密碼請包含英文大小寫"),
     "loginForgotPassword" : MessageLookupByLibrary.simpleMessage("忘記密碼?"),
-    "loginGoogleButton" : MessageLookupByLibrary.simpleMessage("Google"),
+    "loginGoogleButton" : MessageLookupByLibrary.simpleMessage("enGoogle"),
     "loginNoAccount" : MessageLookupByLibrary.simpleMessage("沒有帳號密碼?"),
-    "loginOther" : MessageLookupByLibrary.simpleMessage("使用其他方式登入"),
+    "loginOther" : MessageLookupByLibrary.simpleMessage("en使用其他方式登入"),
     "loginSignIn" : MessageLookupByLibrary.simpleMessage("立即註冊"),
-    "loginTextFormEmail" : MessageLookupByLibrary.simpleMessage("無效的信箱格式"),
-    "loginTextFormPassword" : MessageLookupByLibrary.simpleMessage("密碼請包含英文大小寫"),
-    "loginTrue" : MessageLookupByLibrary.simpleMessage("登入成功"),
+    "loginTextFormEmail" : MessageLookupByLibrary.simpleMessage("en無效的信箱格式"),
+    "loginTextFormPassword" : MessageLookupByLibrary.simpleMessage("en密碼請包含英文大小寫"),
+    "loginTrue" : MessageLookupByLibrary.simpleMessage("en登入成功"),
     "simpleText" : MessageLookupByLibrary.simpleMessage("嗨TW")
   };
 }

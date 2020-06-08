@@ -24,15 +24,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "loginButton" : MessageLookupByLibrary.simpleMessage("登入"),
     "loginFacebookButton" : MessageLookupByLibrary.simpleMessage("Facebook"),
     "loginFalse" : MessageLookupByLibrary.simpleMessage("登入發生錯誤"),
-    "loginForgetPassword" : MessageLookupByLibrary.simpleMessage("密碼請包含英文大小寫"),
+    "loginForgetPassword" : MessageLookupByLibrary.simpleMessage("t密碼請包含英文大小寫"),
     "loginForgotPassword" : MessageLookupByLibrary.simpleMessage("忘記密碼?"),
     "loginGoogleButton" : MessageLookupByLibrary.simpleMessage("Google"),
     "loginNoAccount" : MessageLookupByLibrary.simpleMessage("沒有帳號密碼?"),
     "loginOther" : MessageLookupByLibrary.simpleMessage("使用其他方式登入"),
     "loginSignIn" : MessageLookupByLibrary.simpleMessage("立即註冊"),
-    "loginTextFormEmail" : MessageLookupByLibrary.simpleMessage("無效的信箱格式"),
-    "loginTextFormPassword" : MessageLookupByLibrary.simpleMessage("密碼請包含英文大小寫"),
-    "loginTrue" : MessageLookupByLibrary.simpleMessage("登入成功"),
+    "loginTextFormEmail" : MessageLookupByLibrary.simpleMessage("t無效的信箱格式"),
+    "loginTextFormPassword" : MessageLookupByLibrary.simpleMessage("t密碼請包含英文大小寫"),
+    "loginTrue" : MessageLookupByLibrary.simpleMessage("t登入成功"),
     "simpleText" : MessageLookupByLibrary.simpleMessage("嗨TW")
   };
 }
