@@ -3,6 +3,7 @@ import '../../page/home/home_appbar.dart';
 import '../../common/styles/constants.dart';
 import 'home_listView_card.dart';
 import 'home_title_msg.dart';
+import '../../generated/l10n.dart';
 
 class HomeForm extends StatefulWidget {
   final VoidCallback appbarCallback;
@@ -51,8 +52,11 @@ class _HomeFormState extends State<HomeForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           HomeAppbar(
+            text: S.of(context).homeAppbar,
             onPressed: widget.appbarCallback,
           ),
           SizedBox(
@@ -61,12 +65,12 @@ class _HomeFormState extends State<HomeForm> {
           HomeTtileMsg(todayMoney: "12345.99", marketPrice: "22.5"),
           Padding(
             padding: EdgeInsets.only(left: 3, top: 30, bottom: 10),
-            child: Text("使用中裝置",
+            child: Text(S.of(context).homeDerive,
                 style: TextStyle(color: Colors.white24, fontSize: 20)),
           ),
           Expanded(
             child: ListView.builder(
-              padding: EdgeInsets.only(top:0),
+              padding: EdgeInsets.only(top: 0),
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
               itemCount: 4,

@@ -19,13 +19,14 @@ class LoginTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+        style: TextStyle(color: Colors.white),
         controller: controller,
         decoration: InputDecoration(
           prefixIcon: Icon(icon, color: iconColor),
           filled: true, //背景是否填充
           fillColor: Color.fromRGBO(255, 255, 255, 0.1),
           hintText: hintText,
-          hintStyle: new TextStyle(color: Colors.white),
+          hintStyle: TextStyle(color: Colors.white),
         ),
         obscureText: true,
         autovalidate: true,

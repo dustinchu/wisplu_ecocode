@@ -11,5 +11,9 @@
     "loginFacebookButton":"Facebook",
     "loginForgotPassword":"忘記密碼?",
     "loginNoAccount":"沒有帳號密碼?",
-    "loginSignIn":"立即註冊"
+    "loginSignIn":"立即註冊",
+    "homeAppbar":"概覽",
+    "homeDerive":"使用中裝置",
+    "homeTodayMoney":"今日總花費",
+    "homeElectricCharge":"目前電價"
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../common/styles/colors.dart';
 import 'tooltipShapeBorder.dart';
-
+import '../../generated/l10n.dart';
 class HomeTtileMsg extends StatelessWidget {
   final String todayMoney;
   final String marketPrice;
@@ -37,7 +37,7 @@ class HomeTtileMsg extends StatelessWidget {
               style: TextStyle(color: Colors.blueAccent[200], fontSize: 35),
             ),
             Text(
-              "今日總花費",
+              S.of(context).homeTodayMoney,
               style: TextStyle(color: kTextColor),
             ),
           ],
@@ -58,7 +58,7 @@ class HomeTtileMsg extends StatelessWidget {
               padding: EdgeInsets.all(16.0),
               child: Column(
                 children: [
-                  Text('目前電價', style: TextStyle(color: kTextColor)),
+                  Text(S.of(context).homeElectricCharge, style: TextStyle(color: kTextColor)),
                   Text(marketPrice, style: TextStyle(color: kTextColor)),
                 ],
               )),

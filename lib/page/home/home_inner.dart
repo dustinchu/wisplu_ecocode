@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wisplu_ecocode/bloc/preferences/preferences.dart';
+import 'package:wisplu_ecocode/bloc/preferences/preferences_bloc.dart';
+import '../../bloc/authentication_bloc/authentication_bloc.dart';
 
 class HomeInner extends StatelessWidget {
   final bool position;
   final GestureTapCallback onTap;
-  const HomeInner(
-      {@required this.onTap,
-      @required this.position,
-      Key key})
+  const HomeInner({@required this.onTap, @required this.position, Key key})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -80,19 +81,28 @@ class HomeInner extends StatelessWidget {
                     leading: Icon(Icons.bookmark_border),
                   ),
                   ListTile(
-                    title: Text("Close Friends"),
-                    leading: Icon(Icons.list),
-                  ),
+                      title: Text("tw"),
+                      leading: Icon(Icons.list),
+                      onTap: () => context.bloc<PreferencesBloc>().add(
+                          ChangeLocale(Locale.fromSubtags(
+                              languageCode: 'zh', countryCode: 'TW')))),
                   ListTile(
-                    title: Text("Suggested People"),
-                    leading: Icon(Icons.person_add),
-                  ),
+                      title: Text("en"),
+                      leading: Icon(Icons.person_add),
+                      onTap: () => context.bloc<PreferencesBloc>().add(
+                          ChangeLocale(
+                              Locale.fromSubtags(languageCode: 'en')))),
                   ListTile(
-                    title: Text("Open Facebook"),
+                    title: Text("logout"),
                     leading: Icon(
                       IconData(0xea94, fontFamily: 'icon'),
                       size: 18,
                     ),
+                    onTap: () {
+                      BlocProvider.of<AuthenticationBloc>(context).add(
+                        AuthenticationLoggedOut(),
+                      );
+                    },
                   ),
                   Container(
                     alignment: Alignment.bottomLeft,

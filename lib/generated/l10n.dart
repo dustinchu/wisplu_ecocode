@@ -143,6 +143,42 @@ class S {
       args: [],
     );
   }
+
+  String get homeAppbar {
+    return Intl.message(
+      '概覽',
+      name: 'homeAppbar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get homeDerive {
+    return Intl.message(
+      '使用中裝置',
+      name: 'homeDerive',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get homeTodayMoney {
+    return Intl.message(
+      '今日總花費',
+      name: 'homeTodayMoney',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get homeElectricCharge {
+    return Intl.message(
+      '目前電價',
+      name: 'homeElectricCharge',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
