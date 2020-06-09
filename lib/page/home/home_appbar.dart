@@ -11,7 +11,7 @@ class HomeAppbar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text(text, style: TextStyle(color: kTextColor, fontSize: 16)),
+        Text(text, style: TextStyle(color: kTextColor, fontSize: 20)),
         Expanded(
           flex: 1,
           child: Container(),
@@ -19,8 +19,8 @@ class HomeAppbar extends StatelessWidget {
         IconButton(
             icon: Image.asset(
               "assets/equalizer.png",
-              height: 18.0,
-              width: 18.0,
+              height: 20.0,
+              width: 20.0,
             ),
             onPressed: onPressed)
       ],

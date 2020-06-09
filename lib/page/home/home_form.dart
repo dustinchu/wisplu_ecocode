@@ -1,12 +1,13 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
+import 'package:wisplu_ecocode/page/device/device_form.dart';
+import 'package:wisplu_ecocode/page/device/device_screen.dart';
 import '../../common/animation/openContainerBuilder.dart';
 import '../../page/home/home_appbar.dart';
 import '../../common/styles/constants.dart';
 import 'home_listView_card.dart';
 import 'home_title_msg.dart';
 import '../../generated/l10n.dart';
-import '../device/detailsPage.dart';
 
 class HomeForm extends StatefulWidget {
   final VoidCallback appbarCallback;
@@ -88,8 +89,8 @@ class _HomeFormState extends State<HomeForm> {
                       child: listviewDemo[position],
                     );
                   },
-                  openWidget: DtailsPage(
-                    text: "123",
+                  openWidget: DeviceScreen(
+                    title: "客廳",
                   ),
                 );
               },
