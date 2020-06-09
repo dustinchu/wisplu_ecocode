@@ -1,9 +1,12 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
+import '../../common/animation/openContainerBuilder.dart';
 import '../../page/home/home_appbar.dart';
 import '../../common/styles/constants.dart';
 import 'home_listView_card.dart';
 import 'home_title_msg.dart';
 import '../../generated/l10n.dart';
+import '../device/detailsPage.dart';
 
 class HomeForm extends StatefulWidget {
   final VoidCallback appbarCallback;
@@ -42,6 +45,7 @@ List<Widget> listviewDemo = <Widget>[
 ];
 
 class _HomeFormState extends State<HomeForm> {
+  ContainerTransitionType _transitionType = ContainerTransitionType.fade;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -75,7 +79,19 @@ class _HomeFormState extends State<HomeForm> {
               shrinkWrap: true,
               itemCount: 4,
               itemBuilder: (context, position) {
-                return listviewDemo[position];
+                // return listviewDemo[position];
+                return OpenContainerWrapper(
+                  transitionType: _transitionType,
+                  closedBuilder: (BuildContext _, VoidCallback openContainer) {
+                    return InkWell(
+                      onTap: openContainer,
+                      child: listviewDemo[position],
+                    );
+                  },
+                  openWidget: DtailsPage(
+                    text: "123",
+                  ),
+                );
               },
             ),
           )
