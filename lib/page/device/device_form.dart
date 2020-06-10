@@ -1,8 +1,12 @@
+
+import '../../common/styles/colors.dart';
 import 'package:flutter/material.dart';
 import '../../common/styles/constants.dart';
 import 'device_circle_progress_bar.dart';
 import 'device_appbar.dart';
+import 'device_container_switch.dart';
 import 'device_index_circular.dart';
+import 'device_menu_button.dart';
 
 class DeviceForm extends StatelessWidget {
   final String title;
@@ -35,27 +39,19 @@ class DeviceForm extends StatelessWidget {
                   child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  RaisedButton(
-                      child: Text(
-                        "概覽",
-                        style: TextStyle(color: Color.fromRGBO(0, 255, 252, 1)),
-                      ),
-                      color: Color.fromRGBO(255, 255, 255, 0.3),
-                      shape: BeveledRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(3))),
+                  MenuButton(
+                      text: "概覽",
+                      textColor: kLightColor,
+                      backColor: Color.fromRGBO(255, 255, 255, 0.1),
                       onPressed: () => print("123")),
                   SizedBox(
                     width: 20,
                   ),
-                  RaisedButton(
-                      child: Text(
-                        "周趨勢",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      color: Color.fromRGBO(255, 255, 255, 0.1),
-                      shape: BeveledRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(3))),
-                      onPressed: () => print("123"))
+                  MenuButton(
+                      text: "周趨勢",
+                      textColor: Colors.white,
+                      backColor: Color.fromRGBO(255, 255, 255, 0.1),
+                      onPressed: () => print("123")),
                 ],
               )),
               SizedBox(
@@ -93,8 +89,7 @@ class DeviceForm extends StatelessWidget {
                             Text("nt.", style: TextStyle(color: Colors.white)),
                             Text("600.35",
                                 style: TextStyle(
-                                    color: Color.fromRGBO(0, 255, 252, 1),
-                                    fontSize: 25)),
+                                    color: kLightColor, fontSize: 25)),
                             Text("總金額",
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 15)),
@@ -107,9 +102,9 @@ class DeviceForm extends StatelessWidget {
                       dotRadius: 5.0,
                       progress: 0.6,
                       progressStartColor: Color.fromRGBO(0, 255, 252, 0.9),
-                      progressEndColor: Color.fromRGBO(0, 255, 252, 1),
+                      progressEndColor: kLightColor,
 
-//                    progressColor: Colors.greenAccent,
+                  //  progressColor: Colors.greenAccent,
                     ),
                   ],
                 ),
@@ -145,6 +140,53 @@ class DeviceForm extends StatelessWidget {
                 color: Color.fromRGBO(255, 255, 255, 0.1),
               ),
             ],
+          ),
+          SizedBox(height: 40),
+          ContainerSwitch(
+            height: 2,
+            width: 100,
+            borderWidth: 1,
+            borderColor: kLightColor,
+            onTap: () => print("123"),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ContainerSwitch(
+                height: 100,
+                width: 2,
+                borderWidth: 1,
+                borderColor: kLightColor,
+                onTap: () => print("123"),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: ContainerSwitch(
+                  height: 170,
+                  width: 170,
+                  borderWidth: 1,
+                  borderColor: kLightColor,
+                  onTap: () => print("123"),
+                ),
+              ),
+              ContainerSwitch(
+                height: 100,
+                width: 2,
+                borderWidth: 1,
+                borderColor: kLightColor,
+                onTap: () => print("123"),
+              ),
+            ],
+          ),
+          ContainerSwitch(
+            height: 2,
+            width: 100,
+            borderWidth: 1,
+            borderColor: kLightColor,
+            onTap: () => print("123"),
           ),
         ],
       ),
