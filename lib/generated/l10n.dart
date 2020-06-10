@@ -206,6 +206,51 @@ class S {
       args: [],
     );
   }
+
+  String get emailForm {
+    return Intl.message(
+      '信箱',
+      name: 'emailForm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get passwordForm {
+    return Intl.message(
+      '密碼',
+      name: 'passwordForm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get registerTitle {
+    return Intl.message(
+      '註冊',
+      name: 'registerTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get registrationFailure {
+    return Intl.message(
+      '註冊失敗',
+      name: 'registrationFailure',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get registration {
+    return Intl.message(
+      '註冊...',
+      name: 'registration',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

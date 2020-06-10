@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "deviceChartButton" : MessageLookupByLibrary.simpleMessage("周趨勢"),
     "deviceCircleTotleMoney" : MessageLookupByLibrary.simpleMessage("總金額"),
     "deviceMenuButton" : MessageLookupByLibrary.simpleMessage("概覽"),
+    "emailForm" : MessageLookupByLibrary.simpleMessage("信箱"),
     "homeAppbar" : MessageLookupByLibrary.simpleMessage("概覽"),
     "homeDerive" : MessageLookupByLibrary.simpleMessage("使用中裝置"),
     "homeElectricCharge" : MessageLookupByLibrary.simpleMessage("目前電價"),
@@ -40,6 +41,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "loginTextFormEmail" : MessageLookupByLibrary.simpleMessage("無效的信箱格式"),
     "loginTextFormPassword" : MessageLookupByLibrary.simpleMessage("密碼請包含英文大小寫"),
     "loginTrue" : MessageLookupByLibrary.simpleMessage("登入成功"),
+    "passwordForm" : MessageLookupByLibrary.simpleMessage("密碼"),
+    "registerTitle" : MessageLookupByLibrary.simpleMessage("註冊"),
+    "registration" : MessageLookupByLibrary.simpleMessage("註冊..."),
+    "registrationFailure" : MessageLookupByLibrary.simpleMessage("註冊失敗"),
     "simpleText" : MessageLookupByLibrary.simpleMessage("嗨TW")
   };
 }

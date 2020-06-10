@@ -124,7 +124,7 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
                       controller: _emailController,
                       icon: Icons.email,
                       iconColor: Colors.white,
-                      hintText: "Email",
+                      hintText:  S.of(context).emailForm,
                       validator: (_) {
                         return !state.isEmailValid
                             ? S.of(context).loginTextFormEmail
@@ -157,7 +157,7 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
                       controller: _passwordController,
                       icon: Icons.lock,
                       iconColor: Colors.white,
-                      hintText: "password",
+                      hintText:  S.of(context).passwordForm,
                       validator: (_) {
                         return !state.isPasswordValid
                             ? S.of(context).loginTextFormPassword

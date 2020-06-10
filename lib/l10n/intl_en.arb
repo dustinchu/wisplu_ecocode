@@ -18,5 +18,10 @@
     "homeElectricCharge":"目前電價",
     "deviceMenuButton":"概覽",
     "deviceChartButton":"周趨勢",
-    "deviceCircleTotleMoney":"總金額"
+    "deviceCircleTotleMoney":"總金額",
+    "emailForm":"信箱",
+    "passwordForm":"密碼",
+    "registerTitle":"註冊",
+    "registrationFailure":"註冊失敗",
+    "registration":"註冊..."
 }

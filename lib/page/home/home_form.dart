@@ -1,6 +1,5 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
-import 'package:wisplu_ecocode/page/device/device_form.dart';
 import 'package:wisplu_ecocode/page/device/device_screen.dart';
 import '../../common/animation/openContainerBuilder.dart';
 import '../../page/home/home_appbar.dart';

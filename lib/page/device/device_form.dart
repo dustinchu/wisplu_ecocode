@@ -5,7 +5,7 @@ import '../../common/styles/colors.dart';
 import 'package:flutter/material.dart';
 import '../../common/styles/constants.dart';
 import 'device_circle_progress_bar.dart';
-import 'device_appbar.dart';
+import '../../widget/arrow_appbar.dart';
 import 'device_container_switch.dart';
 import 'device_index_circular.dart';
 import 'device_menu_button.dart';
@@ -27,7 +27,7 @@ class DeviceForm extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
-          DeviceAppbar(
+          ArrowAppbar(
             text: title,
             onPressed: () => Navigator.pop(context, true),
           ),
