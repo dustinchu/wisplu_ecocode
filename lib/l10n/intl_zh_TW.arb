@@ -15,5 +15,8 @@
     "homeAppbar":"概覽",
     "homeDerive":"使用中裝置",
     "homeTodayMoney":"今日總花費",
-    "homeElectricCharge":"目前電價"
+    "homeElectricCharge":"目前電價",
+    "deviceMenuButton":"概覽",
+    "deviceChartButton":"周趨勢",
+    "deviceCircleTotleMoney":"總金額"
 }

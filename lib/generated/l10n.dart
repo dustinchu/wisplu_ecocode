@@ -179,6 +179,33 @@ class S {
       args: [],
     );
   }
+
+  String get deviceMenuButton {
+    return Intl.message(
+      '概覽',
+      name: 'deviceMenuButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get deviceChartButton {
+    return Intl.message(
+      '周趨勢',
+      name: 'deviceChartButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  String get deviceCircleTotleMoney {
+    return Intl.message(
+      '總金額',
+      name: 'deviceCircleTotleMoney',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

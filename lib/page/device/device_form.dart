@@ -1,4 +1,6 @@
 
+import 'package:wisplu_ecocode/generated/l10n.dart';
+
 import '../../common/styles/colors.dart';
 import 'package:flutter/material.dart';
 import '../../common/styles/constants.dart';
@@ -40,7 +42,7 @@ class DeviceForm extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   MenuButton(
-                      text: "概覽",
+                      text: S.of(context).deviceMenuButton,
                       textColor: kLightColor,
                       backColor: Color.fromRGBO(255, 255, 255, 0.1),
                       onPressed: () => print("123")),
@@ -48,7 +50,7 @@ class DeviceForm extends StatelessWidget {
                     width: 20,
                   ),
                   MenuButton(
-                      text: "周趨勢",
+                      text: S.of(context).deviceChartButton,
                       textColor: Colors.white,
                       backColor: Color.fromRGBO(255, 255, 255, 0.1),
                       onPressed: () => print("123")),
@@ -90,7 +92,7 @@ class DeviceForm extends StatelessWidget {
                             Text("600.35",
                                 style: TextStyle(
                                     color: kLightColor, fontSize: 25)),
-                            Text("總金額",
+                            Text(S.of(context).deviceCircleTotleMoney,
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 15)),
                           ],

@@ -21,6 +21,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
+    "deviceChartButton" : MessageLookupByLibrary.simpleMessage("周趨勢"),
+    "deviceCircleTotleMoney" : MessageLookupByLibrary.simpleMessage("總金額"),
+    "deviceMenuButton" : MessageLookupByLibrary.simpleMessage("概覽"),
     "homeAppbar" : MessageLookupByLibrary.simpleMessage("概覽"),
     "homeDerive" : MessageLookupByLibrary.simpleMessage("使用中裝置"),
     "homeElectricCharge" : MessageLookupByLibrary.simpleMessage("目前電價"),
