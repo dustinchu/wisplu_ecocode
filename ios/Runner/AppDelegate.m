@@ -6,8 +6,10 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application
-    didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  [FIRApp configure];
-  return YES;
+didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+[FIRApp configure];
+[GeneratedPluginRegistrant registerWithRegistry:self];
+return [super application:application didFinishLaunchingWithOptions:launchOptions];
+//return YES;
 }
 @end

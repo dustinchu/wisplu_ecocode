@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wisplu_ecocode/generated/l10n.dart';
-import '../../common/styles/constants.dart';
-import '../../bloc/register/bloc.dart';
+import 'package:wisplu_ecocode/bloc/register/bloc.dart';
 import '../../bloc/authentication_bloc/authentication_bloc.dart';
 import '../register/register.dart';
-import '../../widget/arrow_appbar.dart';
 
 class RegisterForm extends StatefulWidget {
   State<RegisterForm> createState() => _RegisterFormState();
@@ -44,7 +41,7 @@ class _RegisterFormState extends State<RegisterForm> {
                 content: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(S.of(context).registration),
+                    Text('Registering...'),
                     CircularProgressIndicator(),
                   ],
                 ),
@@ -64,7 +61,7 @@ class _RegisterFormState extends State<RegisterForm> {
                 content: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(S.of(context).registrationFailure),
+                    Text('Registration Failure'),
                     Icon(Icons.error),
                   ],
                 ),
@@ -75,63 +72,44 @@ class _RegisterFormState extends State<RegisterForm> {
       },
       child: BlocBuilder<RegisterBloc, RegisterState>(
         builder: (context, state) {
-          return Container(
-            padding: EdgeInsets.only(top: 20, bottom: 20, left: 20, right: 20),
-            decoration: BoxDecoration(
-              gradient: kScaffoldBackgroundGradient,
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ArrowAppbar(
-                  text: S.of(context).registerTitle,
-                  onPressed: () => Navigator.pop(context, true),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(20),
-                  child: Form(
-                    child: ListView(
-                      children: <Widget>[
-                        TextFormField(
-                          controller: _emailController,
-                          decoration: InputDecoration(
-                            icon: Icon(Icons.email),
-                            labelText: S.of(context).emailForm,
-                          ),
-                          keyboardType: TextInputType.emailAddress,
-                          autocorrect: false,
-                          autovalidate: true,
-                          validator: (_) {
-                            return !state.isEmailValid
-                                ? S.of(context).loginTextFormEmail
-                                : null;
-                          },
-                        ),
-                        TextFormField(
-                          controller: _passwordController,
-                          decoration: InputDecoration(
-                            icon: Icon(Icons.lock),
-                            labelText: S.of(context).passwordForm,
-                          ),
-                          obscureText: true,
-                          autocorrect: false,
-                          autovalidate: true,
-                          validator: (_) {
-                            return !state.isPasswordValid
-                                ? S.of(context).loginTextFormPassword
-                                : null;
-                          },
-                        ),
-                        RegisterButton(
-                          onPressed: isRegisterButtonEnabled(state)
-                              ? _onFormSubmitted
-                              : null,
-                        ),
-                      ],
+          return Padding(
+            padding: EdgeInsets.all(20),
+            child: Form(
+              child: ListView(
+                children: <Widget>[
+                  TextFormField(
+                    controller: _emailController,
+                    decoration: InputDecoration(
+                      icon: Icon(Icons.email),
+                      labelText: 'Email',
                     ),
+                    keyboardType: TextInputType.emailAddress,
+                    autocorrect: false,
+                    autovalidate: true,
+                    validator: (_) {
+                      return !state.isEmailValid ? 'Invalid Email' : null;
+                    },
                   ),
-                ),
-              ],
+                  TextFormField(
+                    controller: _passwordController,
+                    decoration: InputDecoration(
+                      icon: Icon(Icons.lock),
+                      labelText: 'Password',
+                    ),
+                    obscureText: true,
+                    autocorrect: false,
+                    autovalidate: true,
+                    validator: (_) {
+                      return !state.isPasswordValid ? 'Invalid Password' : null;
+                    },
+                  ),
+                  RegisterButton(
+                    onPressed: isRegisterButtonEnabled(state)
+                        ? _onFormSubmitted
+                        : null,
+                  ),
+                ],
+              ),
             ),
           );
         },

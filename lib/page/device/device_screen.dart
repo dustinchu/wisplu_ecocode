@@ -11,11 +11,9 @@ class DeviceScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
+    return  Scaffold(
         backgroundColor: Colors.transparent,
         body: DeviceForm(title: title),
-      ),
     );
   }
 }
