@@ -1,5 +1,5 @@
-
 import 'package:wisplu_ecocode/generated/l10n.dart';
+import 'package:wisplu_ecocode/widget/inkWellOverlay.dart';
 
 import '../../common/styles/colors.dart';
 import 'package:flutter/material.dart';
@@ -24,9 +24,6 @@ class DeviceForm extends StatelessWidget {
       width: double.infinity,
       child: Column(
         children: [
-          SizedBox(
-            height: 10,
-          ),
           ArrowAppbar(
             text: title,
             onPressed: () => Navigator.pop(context, true),
@@ -57,7 +54,7 @@ class DeviceForm extends StatelessWidget {
                 ],
               )),
               SizedBox(
-                width: 30,
+                width: 20,
               ),
             ],
           ),
@@ -81,9 +78,9 @@ class DeviceForm extends StatelessWidget {
                   children: <Widget>[
                     CircleAvatar(
                       backgroundColor: Color.fromRGBO(255, 255, 255, 0.1),
-                      maxRadius: 70,
+                      maxRadius: 60,
                       child: Padding(
-                        padding: const EdgeInsets.only(right: 10),
+                        padding: const EdgeInsets.only(right: 5),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -100,13 +97,13 @@ class DeviceForm extends StatelessWidget {
                       ),
                     ),
                     CircleProgressBar(
-                      radius: 100.0,
+                      radius: 90.0,
                       dotRadius: 5.0,
                       progress: 0.6,
                       progressStartColor: Color.fromRGBO(0, 255, 252, 0.9),
                       progressEndColor: kLightColor,
 
-                  //  progressColor: Colors.greenAccent,
+                      //  progressColor: Colors.greenAccent,
                     ),
                   ],
                 ),
@@ -143,51 +140,63 @@ class DeviceForm extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 40),
+          SizedBox(height: 20),
           ContainerSwitch(
+            topHeight: 30,
+            topWidth: 120,
             height: 2,
             width: 100,
             borderWidth: 1,
-            borderColor: kLightColor,
+            topBorderColor: Color.fromRGBO(37, 37, 37, 1),
+            borderColor: Color.fromRGBO(151, 151, 151, 1),
             onTap: () => print("123"),
           ),
           SizedBox(
-            height: 10,
+            height: 5,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ContainerSwitch(
+                topHeight: 120,
+                topWidth: 30,
                 height: 100,
                 width: 2,
                 borderWidth: 1,
+                topBorderColor: Color.fromRGBO(37, 37, 37, 1),
                 borderColor: kLightColor,
                 onTap: () => print("123"),
               ),
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: ContainerSwitch(
-                  height: 170,
-                  width: 170,
+                  height: 150,
+                  width: 150,
                   borderWidth: 1,
                   borderColor: kLightColor,
                   onTap: () => print("123"),
                 ),
               ),
               ContainerSwitch(
+                topHeight: 120,
+                topWidth: 30,
                 height: 100,
                 width: 2,
                 borderWidth: 1,
-                borderColor: kLightColor,
+                topBorderColor: Color.fromRGBO(37, 37, 37, 1),
+                borderColor: Color.fromRGBO(151, 151, 151, 1),
                 onTap: () => print("123"),
               ),
             ],
           ),
           ContainerSwitch(
+            topHeight: 30,
+            topWidth: 120,
             height: 2,
             width: 100,
             borderWidth: 1,
-            borderColor: kLightColor,
+            topBorderColor: Color.fromRGBO(37, 37, 37, 1),
+            borderColor: Color.fromRGBO(151, 151, 151, 1),
             onTap: () => print("123"),
           ),
         ],

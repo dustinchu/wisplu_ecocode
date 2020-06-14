@@ -8,8 +8,12 @@ import 'intl/messages_all.dart';
 // Made by Localizely
 // **************************************************************************
 
+// ignore_for_file: non_constant_identifier_names, lines_longer_than_80_chars
+
 class S {
   S();
+  
+  static S current;
   
   static const AppLocalizationDelegate delegate =
     AppLocalizationDelegate();
@@ -19,7 +23,9 @@ class S {
     final localeName = Intl.canonicalizedLocale(name); 
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
-      return S();
+      S.current = S();
+      
+      return S.current;
     });
   } 
 
@@ -27,6 +33,7 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
+  /// `嗨TW`
   String get simpleText {
     return Intl.message(
       '嗨TW',
@@ -36,6 +43,7 @@ class S {
     );
   }
 
+  /// `登入成功`
   String get loginTrue {
     return Intl.message(
       '登入成功',
@@ -45,6 +53,7 @@ class S {
     );
   }
 
+  /// `登入發生錯誤`
   String get loginFalse {
     return Intl.message(
       '登入發生錯誤',
@@ -54,6 +63,7 @@ class S {
     );
   }
 
+  /// `無效的信箱格式`
   String get loginTextFormEmail {
     return Intl.message(
       '無效的信箱格式',
@@ -63,6 +73,7 @@ class S {
     );
   }
 
+  /// `密碼請包含英文大小寫`
   String get loginTextFormPassword {
     return Intl.message(
       '密碼請包含英文大小寫',
@@ -72,6 +83,7 @@ class S {
     );
   }
 
+  /// `密碼請包含英文大小寫`
   String get loginForgetPassword {
     return Intl.message(
       '密碼請包含英文大小寫',
@@ -81,6 +93,7 @@ class S {
     );
   }
 
+  /// `登入`
   String get loginButton {
     return Intl.message(
       '登入',
@@ -90,6 +103,7 @@ class S {
     );
   }
 
+  /// `使用其他方式登入`
   String get loginOther {
     return Intl.message(
       '使用其他方式登入',
@@ -99,6 +113,7 @@ class S {
     );
   }
 
+  /// `Google`
   String get loginGoogleButton {
     return Intl.message(
       'Google',
@@ -108,6 +123,7 @@ class S {
     );
   }
 
+  /// `Facebook`
   String get loginFacebookButton {
     return Intl.message(
       'Facebook',
@@ -117,6 +133,7 @@ class S {
     );
   }
 
+  /// `忘記密碼?`
   String get loginForgotPassword {
     return Intl.message(
       '忘記密碼?',
@@ -126,6 +143,7 @@ class S {
     );
   }
 
+  /// `沒有帳號密碼?`
   String get loginNoAccount {
     return Intl.message(
       '沒有帳號密碼?',
@@ -135,6 +153,7 @@ class S {
     );
   }
 
+  /// `立即註冊`
   String get loginSignIn {
     return Intl.message(
       '立即註冊',
@@ -144,6 +163,7 @@ class S {
     );
   }
 
+  /// `概覽`
   String get homeAppbar {
     return Intl.message(
       '概覽',
@@ -153,6 +173,7 @@ class S {
     );
   }
 
+  /// `使用中裝置`
   String get homeDerive {
     return Intl.message(
       '使用中裝置',
@@ -162,6 +183,7 @@ class S {
     );
   }
 
+  /// `今日總花費`
   String get homeTodayMoney {
     return Intl.message(
       '今日總花費',
@@ -171,6 +193,7 @@ class S {
     );
   }
 
+  /// `目前電價`
   String get homeElectricCharge {
     return Intl.message(
       '目前電價',
@@ -180,6 +203,7 @@ class S {
     );
   }
 
+  /// `概覽`
   String get deviceMenuButton {
     return Intl.message(
       '概覽',
@@ -189,6 +213,7 @@ class S {
     );
   }
 
+  /// `周趨勢`
   String get deviceChartButton {
     return Intl.message(
       '周趨勢',
@@ -198,6 +223,7 @@ class S {
     );
   }
 
+  /// `總金額`
   String get deviceCircleTotleMoney {
     return Intl.message(
       '總金額',
@@ -207,6 +233,7 @@ class S {
     );
   }
 
+  /// `信箱`
   String get emailForm {
     return Intl.message(
       '信箱',
@@ -216,6 +243,7 @@ class S {
     );
   }
 
+  /// `密碼`
   String get passwordForm {
     return Intl.message(
       '密碼',
@@ -225,6 +253,7 @@ class S {
     );
   }
 
+  /// `註冊`
   String get registerTitle {
     return Intl.message(
       '註冊',
@@ -234,6 +263,7 @@ class S {
     );
   }
 
+  /// `註冊失敗`
   String get registrationFailure {
     return Intl.message(
       '註冊失敗',
@@ -243,6 +273,7 @@ class S {
     );
   }
 
+  /// `註冊...`
   String get registration {
     return Intl.message(
       '註冊...',

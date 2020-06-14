@@ -66,6 +66,7 @@ class App extends StatelessWidget {
         locale: localState.locale,
         home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
           builder: (context, state) {
+          //  return HomeScreen();
             if (state is AuthenticationFailure) {
               return LoginScreen(userRepository: _userRepository);
             }
