@@ -1,5 +1,6 @@
 {
     "simpleText": "嗨TW",
+    "loging":"登入中.....",
     "loginTrue":"登入成功",
     "loginFalse":"登入發生錯誤",
     "loginTextFormEmail":"無效的信箱格式",

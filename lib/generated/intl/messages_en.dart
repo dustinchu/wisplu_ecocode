@@ -41,6 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "loginTextFormEmail" : MessageLookupByLibrary.simpleMessage("無效的信箱格式"),
     "loginTextFormPassword" : MessageLookupByLibrary.simpleMessage("密碼請包含英文大小寫"),
     "loginTrue" : MessageLookupByLibrary.simpleMessage("登入成功"),
+    "loging" : MessageLookupByLibrary.simpleMessage("登入中....."),
     "passwordForm" : MessageLookupByLibrary.simpleMessage("密碼"),
     "registerTitle" : MessageLookupByLibrary.simpleMessage("註冊"),
     "registration" : MessageLookupByLibrary.simpleMessage("註冊..."),

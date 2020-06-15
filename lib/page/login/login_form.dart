@@ -1,6 +1,8 @@
+import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../generated/l10n.dart';
 import '../../bloc/authentication_bloc/authentication_bloc.dart';
 import '../../bloc/login/bloc.dart';
@@ -25,9 +27,10 @@ class LoginForm extends StatefulWidget {
   State<LoginForm> createState() => _LoginFormState();
 }
 
-class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
+class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin , AfterLayoutMixin{
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
   AnimationController _loginButtonController;
   LoginBloc _loginBloc;
 
@@ -49,12 +52,20 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
     _loginButtonController = AnimationController(
         duration: Duration(milliseconds: 3000), vsync: this);
   }
-
+  @override
+  Future<void> afterFirstLayout(BuildContext context) async {
+    try {
+      setState(() {});
+    } catch (e) {
+      print("[Login] afterFirstLayout error${e}");
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) {
         if (state.isFailure) {
+          _loginButtonController.reverse();
           Scaffold.of(context)
             ..hideCurrentSnackBar()
             ..showSnackBar(
@@ -73,6 +84,7 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
             );
         }
         if (state.isSubmitting) {
+          _loginButtonController.forward();
           Scaffold.of(context)
             ..hideCurrentSnackBar()
             ..showSnackBar(
@@ -81,7 +93,7 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      S.of(context).loginTrue,
+                      S.of(context).loging,
                     ),
                     CircularProgressIndicator(),
                   ],
@@ -90,6 +102,7 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
             );
         }
         if (state.isSuccess) {
+          _loginButtonController.reverse();
           BlocProvider.of<AuthenticationBloc>(context)
               .add(AuthenticationLoggedIn());
         }
@@ -121,70 +134,34 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
                       height: 30,
                     ),
                     LoginTextFormField(
+                      obscureText: false,
+                      keyboardType: TextInputType.emailAddress,
                       controller: _emailController,
                       icon: Icons.email,
                       iconColor: Colors.white,
-                      hintText:  S.of(context).emailForm,
+                      hintText: S.of(context).emailForm,
                       validator: (_) {
                         return !state.isEmailValid
                             ? S.of(context).loginTextFormEmail
                             : null;
                       },
                     ),
-                    // TextFormField(
-                    //   controller: _emailController,
-                    //   decoration: InputDecoration(
-                    //     filled: true, //背景是否填充
-                    //     fillColor: Color.fromRGBO(255, 255, 255, 0.1),
-                    //     prefixIcon: Icon(
-                    //       Icons.email,
-                    //       color: Colors.white,
-                    //     ),
-                    //     hintText: 'Email',
-                    //     hintStyle: new TextStyle(color: Colors.white),
-                    //   ),
-                    //   keyboardType: TextInputType.emailAddress,
-                    //   autovalidate: true,
-                    //   autocorrect: false,
-                    //   validator: (_) {
-                    //     return !state.isEmailValid ? 'Invalid Email' : null;
-                    //   },
-                    // ),
                     SizedBox(
                       height: 20,
                     ),
                     LoginTextFormField(
+                      obscureText: true,
+                      keyboardType: TextInputType.visiblePassword,
                       controller: _passwordController,
                       icon: Icons.lock,
                       iconColor: Colors.white,
-                      hintText:  S.of(context).passwordForm,
+                      hintText: S.of(context).passwordForm,
                       validator: (_) {
                         return !state.isPasswordValid
                             ? S.of(context).loginTextFormPassword
                             : null;
                       },
                     ),
-                    // TextFormField(
-                    //   controller: _passwordController,
-                    //   decoration: InputDecoration(
-                    //     prefixIcon: Icon(
-                    //       Icons.lock,
-                    //       color: Colors.white,
-                    //     ),
-                    //     filled: true, //背景是否填充
-                    //     fillColor: Color.fromRGBO(255, 255, 255, 0.1),
-                    //     hintText: "password",
-                    //     hintStyle: new TextStyle(color: Colors.white),
-                    //   ),
-                    //   obscureText: true,
-                    //   autovalidate: true,
-                    //   autocorrect: false,
-                    //   validator: (_) {
-                    //     return !state.isPasswordValid
-                    //         ? 'Invalid Password'
-                    //         : null;
-                    //   },
-                    // ),
                     Padding(
                       padding: EdgeInsets.only(top: 10, bottom: 10),
                       child: Row(
@@ -209,9 +186,16 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
                           text: S.of(context).loginButton,
                           textColor: Colors.white,
                           buttonController: _loginButtonController.view,
-                          onTap: isLoginButtonEnabled(state)
-                              ? _onFormSubmitted
-                              : null,
+                          onTap: () async {
+                            await _loginButtonController.forward();
+                            Future.delayed(const Duration(milliseconds: 2000),
+                                () {
+                              _loginButtonController.reverse();
+                            });
+                          },
+                          // onTap: isLoginButtonEnabled(state)
+                          //     ? _onFormSubmitted
+                          //     : null,
                         ),
                         Padding(
                           padding: EdgeInsets.only(top: 20, bottom: 20),
@@ -240,21 +224,38 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
                             ],
                           ),
                         ),
-                        GoogleLoginButton(
-                          text: S.of(context).loginGoogleButton,
-                          onTap: () {
-                            BlocProvider.of<LoginBloc>(context)
-                                .add(LoginWithGooglePressed());
-                          },
-                          buttonController: _loginButtonController.view,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            IconButton(
+                              icon: Image.asset("assets/facebook.png"),
+                              onPressed: () => print("123"),
+                            ),
+                            IconButton(
+                              icon: Image.asset("assets/google-logo.png"),
+                              onPressed: () => print("123"),
+                            ),
+                            IconButton(
+                                icon:
+                                    Image.asset("assets/apple_logo_white.png"),
+                                onPressed: () => print("123")),
+                          ],
                         ),
-                        SizedBox(height: 10),
-                        FacebookLoginButton(
-                          text:S.of(context).loginFacebookButton,
-                          onTap: null,
-                          buttonController: _loginButtonController.view,
-                        ),
-                        SizedBox(height: 10),
+                        // GoogleLoginButton(
+                        //   text: S.of(context).loginGoogleButton,
+                        //   onTap: () {
+                        //     BlocProvider.of<LoginBloc>(context)
+                        //         .add(LoginWithGooglePressed());
+                        //   },
+                        //   buttonController: _loginButtonController.view,
+                        // ),
+                        // SizedBox(height: 10),
+                        // FacebookLoginButton(
+                        //   text: S.of(context).loginFacebookButton,
+                        //   onTap: null,
+                        //   buttonController: _loginButtonController.view,
+                        // ),
+                        SizedBox(height: 30),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -288,6 +289,7 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin {
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
+    _loginButtonController.dispose();
     super.dispose();
   }
 

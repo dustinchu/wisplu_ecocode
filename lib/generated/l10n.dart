@@ -43,6 +43,16 @@ class S {
     );
   }
 
+  /// `登入中.....`
+  String get loging {
+    return Intl.message(
+      '登入中.....',
+      name: 'loging',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `登入成功`
   String get loginTrue {
     return Intl.message(

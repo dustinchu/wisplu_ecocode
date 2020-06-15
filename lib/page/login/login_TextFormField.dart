@@ -6,19 +6,23 @@ class LoginTextFormField extends StatelessWidget {
   final IconData icon;
   final Color iconColor;
   final String hintText;
-
+  final TextInputType keyboardType;
+  final bool obscureText;
   LoginTextFormField(
       {@required this.validator,
       @required this.controller,
       @required this.icon,
       @required this.iconColor,
       @required this.hintText,
+      @required this.keyboardType,
+      @required this.obscureText,
       Key key})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      keyboardType: keyboardType,
         style: TextStyle(color: Colors.white),
         controller: controller,
         decoration: InputDecoration(
@@ -28,7 +32,7 @@ class LoginTextFormField extends StatelessWidget {
           hintText: hintText,
           hintStyle: TextStyle(color: Colors.white),
         ),
-        obscureText: true,
+        obscureText: obscureText,
         autovalidate: true,
         autocorrect: false,
         validator: validator);
