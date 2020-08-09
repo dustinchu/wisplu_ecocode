@@ -29,6 +29,30 @@ class UserRepository {
     );
   }
 
+  Future<bool> checkEmailVerified() async{
+    try {
+      FirebaseUser user = await FirebaseAuth.instance.currentUser();
+      await user.reload();
+      user = await FirebaseAuth.instance.currentUser();
+      return user.isEmailVerified;
+    } catch (e) {
+      return e.message;
+    }
+  }
+
+  Future<void> sendEmail({String email, String password}) async {
+    FirebaseUser user = (await FirebaseAuth.instance
+            .signInWithEmailAndPassword(email: email, password: password))
+        .user;
+    try {
+      await user.sendEmailVerification();
+      return user.uid;
+    } catch (e) {
+      print("An error occured while trying to send email        verification");
+      print(e.message);
+    }
+  }
+
   Future<void> signUp({String email, String password}) async {
     return await _firebaseAuth.createUserWithEmailAndPassword(
       email: email,

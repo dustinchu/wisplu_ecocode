@@ -40,8 +40,14 @@ class AuthenticationBloc
     try {
       final isSignedIn = await _userRepository.isSignedIn();
       if (isSignedIn) {
-        final name = await _userRepository.getUser();
-        yield AuthenticationSuccess(name);
+        final isVerified = await _userRepository.checkEmailVerified();
+        //判斷信箱是否有認證
+        if (isVerified) {
+          final name = await _userRepository.getUser();
+          yield AuthenticationSuccess(name);
+        } else {
+          yield AuthenticationFailure();
+        }
       } else {
         yield AuthenticationFailure();
       }

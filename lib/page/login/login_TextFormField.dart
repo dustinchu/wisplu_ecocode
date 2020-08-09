@@ -30,7 +30,7 @@ class LoginTextFormField extends StatelessWidget {
           filled: true, //背景是否填充
           fillColor: Color.fromRGBO(255, 255, 255, 0.1),
           hintText: hintText,
-          hintStyle: TextStyle(color: Colors.white),
+          hintStyle: TextStyle(color: Colors.white60),
         ),
         obscureText: obscureText,
         autovalidate: true,

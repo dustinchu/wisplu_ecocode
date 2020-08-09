@@ -292,6 +292,46 @@ class S {
       args: [],
     );
   }
+
+  /// `帳號或密碼錯誤`
+  String get incorrectAccount {
+    return Intl.message(
+      '帳號或密碼錯誤',
+      name: 'incorrectAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `請輸入帳號密碼`
+  String get inputAccount {
+    return Intl.message(
+      '請輸入帳號密碼',
+      name: 'inputAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `信箱尚未認證`
+  String get emailVerifiedFailed {
+    return Intl.message(
+      '信箱尚未認證',
+      name: 'emailVerifiedFailed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `錯誤`
+  String get error {
+    return Intl.message(
+      '錯誤',
+      name: 'error',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

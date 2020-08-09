@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:wisplu_ecocode/bloc/register/bloc.dart';
+import 'package:wisplu_ecocode/generated/l10n.dart';
+import 'package:wisplu_ecocode/page/login/login_TextFormField.dart';
+import '../../common/styles/constants.dart';
 import '../../bloc/authentication_bloc/authentication_bloc.dart';
 import '../register/register.dart';
 
@@ -49,8 +52,8 @@ class _RegisterFormState extends State<RegisterForm> {
             );
         }
         if (state.isSuccess) {
-          BlocProvider.of<AuthenticationBloc>(context)
-              .add(AuthenticationLoggedIn());
+          // BlocProvider.of<AuthenticationBloc>(context)
+          //     .add(AuthenticationLoggedIn());
           Navigator.of(context).pop();
         }
         if (state.isFailure) {
@@ -72,43 +75,57 @@ class _RegisterFormState extends State<RegisterForm> {
       },
       child: BlocBuilder<RegisterBloc, RegisterState>(
         builder: (context, state) {
-          return Padding(
-            padding: EdgeInsets.all(20),
-            child: Form(
-              child: ListView(
-                children: <Widget>[
-                  TextFormField(
-                    controller: _emailController,
-                    decoration: InputDecoration(
-                      icon: Icon(Icons.email),
-                      labelText: 'Email',
+          return Container(
+            decoration: BoxDecoration(
+              gradient: kScaffoldBackgroundGradient,
+            ),
+            child: Padding(
+              padding: EdgeInsets.all(20),
+              child: Form(
+                child: ListView(
+                  children: <Widget>[
+                    SizedBox(
+                      height: 200,
                     ),
-                    keyboardType: TextInputType.emailAddress,
-                    autocorrect: false,
-                    autovalidate: true,
-                    validator: (_) {
-                      return !state.isEmailValid ? 'Invalid Email' : null;
-                    },
-                  ),
-                  TextFormField(
-                    controller: _passwordController,
-                    decoration: InputDecoration(
-                      icon: Icon(Icons.lock),
-                      labelText: 'Password',
+                    LoginTextFormField(
+                      obscureText: false,
+                      keyboardType: TextInputType.emailAddress,
+                      controller: _emailController,
+                      icon: Icons.email,
+                      iconColor: Colors.white,
+                      hintText: S.of(context).emailForm,
+                      validator: (_) {
+                        return !state.isEmailValid
+                            ? S.of(context).loginTextFormEmail
+                            : null;
+                      },
                     ),
-                    obscureText: true,
-                    autocorrect: false,
-                    autovalidate: true,
-                    validator: (_) {
-                      return !state.isPasswordValid ? 'Invalid Password' : null;
-                    },
-                  ),
-                  RegisterButton(
-                    onPressed: isRegisterButtonEnabled(state)
-                        ? _onFormSubmitted
-                        : null,
-                  ),
-                ],
+                    SizedBox(
+                      height: 20,
+                    ),
+                    LoginTextFormField(
+                      obscureText: true,
+                      keyboardType: TextInputType.visiblePassword,
+                      controller: _passwordController,
+                      icon: Icons.lock,
+                      iconColor: Colors.white,
+                      hintText: S.of(context).passwordForm,
+                      validator: (_) {
+                        return !state.isPasswordValid
+                            ? S.of(context).loginForgetPassword
+                            : null;
+                      },
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    RegisterButton(
+                      onPressed: isRegisterButtonEnabled(state)
+                          ? _onFormSubmitted
+                          : null,
+                    ),
+                  ],
+                ),
               ),
             ),
           );
@@ -144,4 +161,5 @@ class _RegisterFormState extends State<RegisterForm> {
       ),
     );
   }
+
 }

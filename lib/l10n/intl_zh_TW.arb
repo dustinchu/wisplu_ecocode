@@ -24,5 +24,10 @@
     "passwordForm":"密碼",
     "registerTitle":"註冊",
     "registrationFailure":"註冊失敗",
-    "registration":"註冊..."
+    "registration":"註冊...",
+    "incorrectAccount":"帳號或密碼錯誤",
+    "inputAccount":"請輸入帳號密碼",
+    "emailVerifiedFailed":"信箱尚未認證",
+    "error":"錯誤"
+
 }

@@ -7,6 +7,7 @@ class LoginState {
   final bool isSubmitting;
   final bool isSuccess;
   final bool isFailure;
+  final bool isEmailVerified;
 
   bool get isFormValid => isEmailValid && isPasswordValid;
 
@@ -16,6 +17,7 @@ class LoginState {
     @required this.isSubmitting,
     @required this.isSuccess,
     @required this.isFailure,
+    @required this.isEmailVerified,
   });
 
   factory LoginState.initial() {
@@ -25,6 +27,7 @@ class LoginState {
       isSubmitting: false,
       isSuccess: false,
       isFailure: false,
+      isEmailVerified: false,
     );
   }
 
@@ -33,6 +36,7 @@ class LoginState {
       isEmailValid: true,
       isPasswordValid: true,
       isSubmitting: true,
+      isEmailVerified: true,
       isSuccess: false,
       isFailure: false,
     );
@@ -42,16 +46,27 @@ class LoginState {
     return LoginState(
       isEmailValid: true,
       isPasswordValid: true,
+      isEmailVerified: false,
       isSubmitting: false,
       isSuccess: false,
       isFailure: true,
     );
   }
-
+  factory LoginState.verifiedFailure() {
+    return LoginState(
+      isEmailValid: true,
+      isPasswordValid: true,
+      isEmailVerified: false,
+      isSubmitting: false,
+      isSuccess: true,
+      isFailure: false,
+    );
+  }
   factory LoginState.success() {
     return LoginState(
       isEmailValid: true,
       isPasswordValid: true,
+      isEmailVerified: true,
       isSubmitting: false,
       isSuccess: true,
       isFailure: false,
@@ -65,6 +80,7 @@ class LoginState {
     return copyWith(
       isEmailValid: isEmailValid,
       isPasswordValid: isPasswordValid,
+      isEmailVerified: false,
       isSubmitting: false,
       isSuccess: false,
       isFailure: false,
@@ -78,21 +94,23 @@ class LoginState {
     bool isSubmitting,
     bool isSuccess,
     bool isFailure,
+    bool isEmailVerified,
   }) {
     return LoginState(
-      isEmailValid: isEmailValid ?? this.isEmailValid,
-      isPasswordValid: isPasswordValid ?? this.isPasswordValid,
-      isSubmitting: isSubmitting ?? this.isSubmitting,
-      isSuccess: isSuccess ?? this.isSuccess,
-      isFailure: isFailure ?? this.isFailure,
-    );
+        isEmailValid: isEmailValid ?? this.isEmailValid,
+        isPasswordValid: isPasswordValid ?? this.isPasswordValid,
+        isSubmitting: isSubmitting ?? this.isSubmitting,
+        isSuccess: isSuccess ?? this.isSuccess,
+        isFailure: isFailure ?? this.isFailure,
+        isEmailVerified: isEmailVerified ?? this.isEmailValid);
   }
 
   @override
   String toString() {
     return '''LoginState {
       isEmailValid: $isEmailValid,
-      isPasswordValid: $isPasswordValid,      
+      isPasswordValid: $isPasswordValid,
+      isEmailVerified: $isEmailVerified,
       isSubmitting: $isSubmitting,
       isSuccess: $isSuccess,
       isFailure: $isFailure,

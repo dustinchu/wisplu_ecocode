@@ -31,7 +31,23 @@ class RegisterPasswordChanged extends RegisterEvent {
   @override
   String toString() => 'PasswordChanged { password: $password }';
 }
+class RegisterSendEmail extends RegisterEvent {
+  final String email;
+  final String password;
 
+  const RegisterSendEmail({
+    @required this.email,
+    @required this.password,
+  });
+
+  @override
+  List<Object> get props => [email, password];
+
+  @override
+  String toString() {
+    return 'Submitted { email: $email, password: $password }';
+  }
+}
 class RegisterSubmitted extends RegisterEvent {
   final String email;
   final String password;

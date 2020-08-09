@@ -45,6 +45,25 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
       yield* _mapRegisterPasswordChangedToState(event.password);
     } else if (event is RegisterSubmitted) {
       yield* _mapRegisterSubmittedToState(event.email, event.password);
+    } else if (event is RegisterSendEmail) {
+      yield* _mapRegisterSendEmailToState(event.email, event.password);
+    }
+  }
+
+  Stream<RegisterState> _mapRegisterSendEmailToState(
+    String email,
+    String password,
+  ) async* {
+    yield RegisterState.loading();
+    try {
+      await _userRepository.sendEmail(
+        email: email,
+        password: password,
+      );
+      // yield RegisterState.success();
+    } catch (_) {
+      print("error==${_}");
+      // yield RegisterState.failure();
     }
   }
 
@@ -71,6 +90,11 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
         email: email,
         password: password,
       );
+      await _userRepository.sendEmail(
+        email: email,
+        password: password,
+      );
+      _userRepository.signOut();
       yield RegisterState.success();
     } catch (_) {
       print("error==${_}");

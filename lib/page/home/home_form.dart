@@ -1,4 +1,5 @@
 import 'package:animations/animations.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:wisplu_ecocode/page/device/device_screen.dart';
 import '../../common/animation/openContainerBuilder.dart';
@@ -94,7 +95,20 @@ class _HomeFormState extends State<HomeForm> {
                 );
               },
             ),
-          )
+          ),
+          FlatButton(
+              child: Text("check"),
+              textColor: Colors.white,
+              onPressed: () async {
+                try {
+                  FirebaseUser user = await FirebaseAuth.instance.currentUser();
+                  await user.reload();
+                  user = await FirebaseAuth.instance.currentUser();
+                  print(user.isEmailVerified);
+                } catch (e) {
+                  return e.message;
+                }
+              }),
         ],
       ),
     );

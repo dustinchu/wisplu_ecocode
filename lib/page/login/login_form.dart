@@ -1,8 +1,9 @@
 import 'package:after_layout/after_layout.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:wisplu_ecocode/widget/show_message_dialog.dart';
 import '../../generated/l10n.dart';
 import '../../bloc/authentication_bloc/authentication_bloc.dart';
 import '../../bloc/login/bloc.dart';
@@ -12,8 +13,6 @@ import '../../widget/animation_button.dart';
 import '../../user_repository.dart';
 import '../login/login.dart';
 import '../../common/styles/colors.dart';
-import 'facebook_login_button.dart';
-import 'google_login_button.dart';
 import 'login_TextFormField.dart';
 
 class LoginForm extends StatefulWidget {
@@ -27,7 +26,8 @@ class LoginForm extends StatefulWidget {
   State<LoginForm> createState() => _LoginFormState();
 }
 
-class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin , AfterLayoutMixin{
+class _LoginFormState extends State<LoginForm>
+    with TickerProviderStateMixin, AfterLayoutMixin {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -52,6 +52,7 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin , A
     _loginButtonController = AnimationController(
         duration: Duration(milliseconds: 3000), vsync: this);
   }
+
   @override
   Future<void> afterFirstLayout(BuildContext context) async {
     try {
@@ -60,51 +61,47 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin , A
       print("[Login] afterFirstLayout error${e}");
     }
   }
+
+  Future<Null> _playAnimation() async {
+    try {
+      setState(() {});
+      await _loginButtonController.forward();
+    } on TickerCanceled {
+      print('[_playAnimation] error');
+    }
+  }
+
+  Future<Null> _stopAnimation() async {
+    try {
+      await _loginButtonController.reverse();
+      setState(() {});
+    } on TickerCanceled {
+      print('[_stopAnimation] error');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocListener<LoginBloc, LoginState>(
-      listener: (context, state) {
+      listener: (context, state) async {
         if (state.isFailure) {
-          _loginButtonController.reverse();
-          Scaffold.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(
-              SnackBar(
-                content: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      S.of(context).loginFalse,
-                    ),
-                    Icon(Icons.error)
-                  ],
-                ),
-                backgroundColor: Colors.red,
-              ),
-            );
+          ShowMessageDialog(context, S.of(context).incorrectAccount);
+          _stopAnimation();
         }
         if (state.isSubmitting) {
+          await _playAnimation();
           _loginButtonController.forward();
-          Scaffold.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(
-              SnackBar(
-                content: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      S.of(context).loging,
-                    ),
-                    CircularProgressIndicator(),
-                  ],
-                ),
-              ),
-            );
         }
         if (state.isSuccess) {
-          _loginButtonController.reverse();
-          BlocProvider.of<AuthenticationBloc>(context)
-              .add(AuthenticationLoggedIn());
+          _stopAnimation();
+          if (state.isEmailVerified) {
+            _loginButtonController.reverse();
+            BlocProvider.of<AuthenticationBloc>(context)
+                .add(AuthenticationLoggedIn());
+          } else {
+            ShowMessageDialog(context, S.of(context).emailVerifiedFailed);
+            _stopAnimation();
+          }
         }
       },
       child: Container(
@@ -167,6 +164,10 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin , A
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
+                          // Text(
+                          //   state.isFailure? "":S.of(context).incorrectAccount,
+                          //    style: TextStyle(color:HexColor("EF6359"),fontSize: 12),
+                          // ),
                           Text(
                             S.of(context).loginForgotPassword,
                             style: TextStyle(color: kLoginTextColor),
@@ -186,16 +187,10 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin , A
                           text: S.of(context).loginButton,
                           textColor: Colors.white,
                           buttonController: _loginButtonController.view,
-                          onTap: () async {
-                            await _loginButtonController.forward();
-                            Future.delayed(const Duration(milliseconds: 2000),
-                                () {
-                              _loginButtonController.reverse();
-                            });
-                          },
-                          // onTap: isLoginButtonEnabled(state)
-                          //     ? _onFormSubmitted
-                          //     : null,
+                          // onTap: () async {
+                          onTap: isLoginButtonEnabled(state)
+                              ? _onFormSubmitted
+                              : null,
                         ),
                         Padding(
                           padding: EdgeInsets.only(top: 20, bottom: 20),
@@ -232,13 +227,16 @@ class _LoginFormState extends State<LoginForm> with TickerProviderStateMixin , A
                               onPressed: () => print("123"),
                             ),
                             IconButton(
-                              icon: Image.asset("assets/google-logo.png"),
-                              onPressed: () => print("123"),
-                            ),
+                                icon: Image.asset("assets/google-logo.png"),
+                                onPressed: () =>
+                                    BlocProvider.of<LoginBloc>(context)
+                                        .add(LoginWithGooglePressed())),
                             IconButton(
                                 icon:
                                     Image.asset("assets/apple_logo_white.png"),
-                                onPressed: () => print("123")),
+                                onPressed: () =>
+                                    BlocProvider.of<LoginBloc>(context)
+                                        .add(LoginWithGooglePressed())),
                           ],
                         ),
                         // GoogleLoginButton(
