@@ -29,7 +29,7 @@ class UserRepository {
     );
   }
 
-  Future<bool> checkEmailVerified() async{
+  Future<bool> checkEmailVerified() async {
     try {
       FirebaseUser user = await FirebaseAuth.instance.currentUser();
       await user.reload();
@@ -39,7 +39,11 @@ class UserRepository {
       return e.message;
     }
   }
-
+  //發送密碼更改信件
+  Future<void> sendPasswordResetEmail(String email) async {
+    return _firebaseAuth.sendPasswordResetEmail(email: email);
+  }
+  //發送註冊信件
   Future<void> sendEmail({String email, String password}) async {
     FirebaseUser user = (await FirebaseAuth.instance
             .signInWithEmailAndPassword(email: email, password: password))
@@ -52,21 +56,21 @@ class UserRepository {
       print(e.message);
     }
   }
-
+  //註冊
   Future<void> signUp({String email, String password}) async {
     return await _firebaseAuth.createUserWithEmailAndPassword(
       email: email,
       password: password,
     );
   }
-
+  //登出
   Future<void> signOut() async {
     return Future.wait([
       _firebaseAuth.signOut(),
       _googleSignIn.signOut(),
     ]);
   }
-
+  
   Future<bool> isSignedIn() async {
     final currentUser = await _firebaseAuth.currentUser();
     return currentUser != null;

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wisplu_ecocode/bloc/register/bloc.dart';
-import 'package:wisplu_ecocode/generated/l10n.dart';
-import 'package:wisplu_ecocode/page/login/login_TextFormField.dart';
+import '../../bloc/register/bloc.dart';
+import '../../generated/l10n.dart';
+import '../../page/login/login_TextFormField.dart';
 import '../../common/styles/constants.dart';
-import '../../bloc/authentication_bloc/authentication_bloc.dart';
 import '../register/register.dart';
 
 class RegisterForm extends StatefulWidget {

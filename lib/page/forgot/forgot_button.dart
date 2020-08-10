@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class ForgotPasswordButton extends StatelessWidget {
+class ForgotButton extends StatelessWidget {
   final VoidCallback _onPressed;
 
-  ForgotPasswordButton({Key key, VoidCallback onPressed})
+  ForgotButton({Key key, VoidCallback onPressed})
       : _onPressed = onPressed,
         super(key: key);
 

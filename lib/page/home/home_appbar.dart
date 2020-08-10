@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:wisplu_ecocode/common/styles/colors.dart';
+import '../../common/styles/colors.dart';
 
 class HomeAppbar extends StatelessWidget {
   final VoidCallback onPressed;

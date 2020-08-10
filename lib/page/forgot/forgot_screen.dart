@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../bloc/register/bloc.dart';
+import '../../bloc/forgot/bloc.dart';
 import '../../user_repository.dart';
-import '../register/register.dart';
+import 'forgot_form.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
   final UserRepository _userRepository;
@@ -15,11 +15,11 @@ class ForgotPasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Register')),
+      appBar: AppBar(title: Text('forgot')),
       body: Center(
-        child: BlocProvider<RegisterBloc>(
-          create: (context) => RegisterBloc(userRepository: _userRepository),
-          child: RegisterForm(),
+        child: BlocProvider<ForgotBloc>(
+          create: (context) => ForgotBloc(userRepository: _userRepository),
+          child: ForgotForm(),
         ),
       ),
     );

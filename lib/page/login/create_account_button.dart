@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../user_repository.dart';
-import '../register/register.dart';
 import '../../common/styles/colors.dart';
 
 class CreateAccountButton extends StatelessWidget {

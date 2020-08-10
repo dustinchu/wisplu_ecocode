@@ -1,5 +1,4 @@
-import 'package:wisplu_ecocode/generated/l10n.dart';
-import 'package:wisplu_ecocode/widget/inkWellOverlay.dart';
+import '../../generated/l10n.dart';
 
 import '../../common/styles/colors.dart';
 import 'package:flutter/material.dart';

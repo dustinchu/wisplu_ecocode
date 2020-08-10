@@ -1,9 +1,8 @@
 import 'package:after_layout/after_layout.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-// import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:wisplu_ecocode/widget/show_message_dialog.dart';
+import '../../widget/show_message_dialog.dart';
 import '../../generated/l10n.dart';
 import '../../bloc/authentication_bloc/authentication_bloc.dart';
 import '../../bloc/login/bloc.dart';
@@ -14,7 +13,7 @@ import '../../user_repository.dart';
 import '../login/login.dart';
 import '../../common/styles/colors.dart';
 import 'login_TextFormField.dart';
-
+import '../forgot/forgot.dart';
 class LoginForm extends StatefulWidget {
   final UserRepository _userRepository;
 
@@ -168,11 +167,21 @@ class _LoginFormState extends State<LoginForm>
                           //   state.isFailure? "":S.of(context).incorrectAccount,
                           //    style: TextStyle(color:HexColor("EF6359"),fontSize: 12),
                           // ),
-                          Text(
-                            S.of(context).loginForgotPassword,
-                            style: TextStyle(color: kLoginTextColor),
-                            // style: TextStyle(
-                            //     color: Color.fromRGBO(195, 159, 43, 1)),
+                          InkWell(
+                            onTap: () {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(builder: (context) {
+                                      return ForgotPasswordScreen(
+                                          userRepository: _userRepository);
+                                    }),
+                                  );
+                                },
+                            child: Text(
+                              S.of(context).loginForgotPassword,
+                              style: TextStyle(color: kLoginTextColor),
+                              // style: TextStyle(
+                              //     color: Color.fromRGBO(195, 159, 43, 1)),
+                            ),
                           )
                         ],
                       ),

@@ -1,7 +1,7 @@
 import 'package:animations/animations.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:wisplu_ecocode/page/device/device_screen.dart';
+import '../../page/device/device_screen.dart';
 import '../../common/animation/openContainerBuilder.dart';
 import '../../page/home/home_appbar.dart';
 import '../../common/styles/constants.dart';

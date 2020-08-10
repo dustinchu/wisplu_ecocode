@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:wisplu_ecocode/generated/l10n.dart';
 
  ShowMessageDialog (BuildContext context ,String Msg){
   showDialog(

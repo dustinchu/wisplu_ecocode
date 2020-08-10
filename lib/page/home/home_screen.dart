@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inner_drawer/inner_drawer.dart';
-import 'package:wisplu_ecocode/page/home/home_form.dart';
+import '../../page/home/home_form.dart';
 
 import 'home_inner.dart';
 
