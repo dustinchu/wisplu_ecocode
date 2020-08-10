@@ -96,19 +96,6 @@ class _HomeFormState extends State<HomeForm> {
               },
             ),
           ),
-          FlatButton(
-              child: Text("check"),
-              textColor: Colors.white,
-              onPressed: () async {
-                try {
-                  FirebaseUser user = await FirebaseAuth.instance.currentUser();
-                  await user.reload();
-                  user = await FirebaseAuth.instance.currentUser();
-                  print(user.isEmailVerified);
-                } catch (e) {
-                  return e.message;
-                }
-              }),
         ],
       ),
     );
