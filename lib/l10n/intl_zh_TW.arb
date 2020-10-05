@@ -28,6 +28,12 @@
     "incorrectAccount":"帳號或密碼錯誤",
     "inputAccount":"請輸入帳號密碼",
     "emailVerifiedFailed":"信箱尚未認證",
-    "error":"錯誤"
-
+    "error":"錯誤",
+    "errorInvalidEmail":"無效信箱",
+    "errorWrongPassword":"密碼錯誤",
+    "errorUserNotFound":"信箱或密碼錯誤",
+    "errorUserDisabled":"帳戶已停用",
+    "errorTooManyRequests":"請求太多",
+    "errorOperationNotAllowed":"不予許這個操作方式",
+    "errorEmailAlreadyInUse":"信箱使用中"
 }

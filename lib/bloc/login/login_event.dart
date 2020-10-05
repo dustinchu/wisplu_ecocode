@@ -34,6 +34,8 @@ class LoginPasswordChanged extends LoginEvent {
 
 class LoginWithGooglePressed extends LoginEvent {}
 
+class LoginWithApplePressed extends LoginEvent {}
+
 class LoginWithCredentialsPressed extends LoginEvent {
   final String email;
   final String password;

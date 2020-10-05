@@ -40,12 +40,14 @@ dependencies:
   flutter_localized_locales: ^1.1.1
   animations: ^1.1.0
   after_layout: 1.0.7+2
+  apple_sign_in: ^0.1.0
 flutter:
   uses-material-design: true
   assets:
     - assets/
 
 flutter_intl:
-    enabled: true
-    main_locale: zh_TW
-    class_name: S
+  enabled: true
+  main_locale: zh_TW
+  class_name: S
+

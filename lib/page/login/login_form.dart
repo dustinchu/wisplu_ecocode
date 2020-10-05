@@ -12,8 +12,10 @@ import '../../widget/animation_button.dart';
 import '../../user_repository.dart';
 import '../login/login.dart';
 import '../../common/styles/colors.dart';
+import 'auth-exception.dart';
 import 'login_TextFormField.dart';
 import '../forgot/forgot.dart';
+
 class LoginForm extends StatefulWidget {
   final UserRepository _userRepository;
 
@@ -84,7 +86,9 @@ class _LoginFormState extends State<LoginForm>
     return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) async {
         if (state.isFailure) {
-          ShowMessageDialog(context, S.of(context).incorrectAccount);
+          print(
+              "ErrorCode${AuthExceptionHandler.handleException(context, state.isErrorCode)}");
+          ShowMessageDialog(context, AuthExceptionHandler.handleException(context, state.isErrorCode));
           _stopAnimation();
         }
         if (state.isSubmitting) {
@@ -169,13 +173,13 @@ class _LoginFormState extends State<LoginForm>
                           // ),
                           InkWell(
                             onTap: () {
-                                  Navigator.of(context).push(
-                                    MaterialPageRoute(builder: (context) {
-                                      return ForgotPasswordScreen(
-                                          userRepository: _userRepository);
-                                    }),
-                                  );
-                                },
+                              Navigator.of(context).push(
+                                MaterialPageRoute(builder: (context) {
+                                  return ForgotPasswordScreen(
+                                      userRepository: _userRepository);
+                                }),
+                              );
+                            },
                             child: Text(
                               S.of(context).loginForgotPassword,
                               style: TextStyle(color: kLoginTextColor),
@@ -206,11 +210,12 @@ class _LoginFormState extends State<LoginForm>
                           child: Row(
                             children: [
                               Expanded(
-                                  flex: 1,
-                                  child: Container(
-                                    height: 0.5,
-                                    color: Colors.white,
-                                  )),
+                                flex: 1,
+                                child: Container(
+                                  height: 0.5,
+                                  color: Colors.white,
+                                ),
+                              ),
                               Padding(
                                 padding: EdgeInsets.only(left: 20, right: 20),
                                 child: Text(
@@ -245,7 +250,7 @@ class _LoginFormState extends State<LoginForm>
                                     Image.asset("assets/apple_logo_white.png"),
                                 onPressed: () =>
                                     BlocProvider.of<LoginBloc>(context)
-                                        .add(LoginWithGooglePressed())),
+                                        .add(LoginWithApplePressed())),
                           ],
                         ),
                         // GoogleLoginButton(

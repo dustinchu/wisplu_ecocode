@@ -332,6 +332,76 @@ class S {
       args: [],
     );
   }
+
+  /// `無效信箱`
+  String get errorInvalidEmail {
+    return Intl.message(
+      '無效信箱',
+      name: 'errorInvalidEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `密碼錯誤`
+  String get errorWrongPassword {
+    return Intl.message(
+      '密碼錯誤',
+      name: 'errorWrongPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `信箱或密碼錯誤`
+  String get errorUserNotFound {
+    return Intl.message(
+      '信箱或密碼錯誤',
+      name: 'errorUserNotFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `帳戶已停用`
+  String get errorUserDisabled {
+    return Intl.message(
+      '帳戶已停用',
+      name: 'errorUserDisabled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `請求太多`
+  String get errorTooManyRequests {
+    return Intl.message(
+      '請求太多',
+      name: 'errorTooManyRequests',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `不予許這個操作方式`
+  String get errorOperationNotAllowed {
+    return Intl.message(
+      '不予許這個操作方式',
+      name: 'errorOperationNotAllowed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `信箱使用中`
+  String get errorEmailAlreadyInUse {
+    return Intl.message(
+      '信箱使用中',
+      name: 'errorEmailAlreadyInUse',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

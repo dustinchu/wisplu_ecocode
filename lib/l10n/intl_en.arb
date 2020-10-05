@@ -28,5 +28,12 @@
     "incorrectAccount":"帳號或密碼錯誤",
     "inputAccount":"請輸入帳號密碼",
     "emailVerifiedFailed":"信箱尚未認證",
-    "error":"錯誤"
+    "error":"錯誤",
+    "errorInvalidEmail":"errorInvalidEmail",
+    "errorWrongPassword":"errorWrongPassword",
+    "errorUserNotFound":"errorUserNotFound",
+    "errorUserDisabled":"errorUserDisabled",
+    "errorTooManyRequests":"errorTooManyRequests",
+    "errorOperationNotAllowed":"errorOperationNotAllowed",
+    "errorEmailAlreadyInUse":"errorEmailAlreadyInUse"
 }

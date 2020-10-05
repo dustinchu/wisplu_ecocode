@@ -4,6 +4,7 @@ import 'package:meta/meta.dart';
 import 'package:rxdart/rxdart.dart';
 import '../../user_repository.dart';
 import '../../common/utif/validators.dart';
+import '../../page/login/auth-exception.dart';
 import 'bloc.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
@@ -42,6 +43,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       yield* _mapLoginPasswordChangedToState(event.password);
     } else if (event is LoginWithGooglePressed) {
       yield* _mapLoginWithGooglePressedToState();
+    } else if (event is LoginWithApplePressed) {
+      yield* _mapLoginWithApplePressedToState();
     } else if (event is LoginWithCredentialsPressed) {
       yield* _mapLoginWithCredentialsPressedToState(
         email: event.email,
@@ -64,11 +67,22 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   Stream<LoginState> _mapLoginWithGooglePressedToState() async* {
     try {
-      await _userRepository.signInWithGoogle();
-      yield LoginState.success();
-    } catch (_) {
-      print("google_error==${_}");
-      yield LoginState.failure();
+      if (await _userRepository.signInWithGoogle() != null)
+        yield LoginState.success();
+    } catch (e) {
+      // AuthExceptionHandler.handleException(e);
+      print("google_error==${e}");
+      yield LoginState.failure(e);
+    }
+  }
+
+  Stream<LoginState> _mapLoginWithApplePressedToState() async* {
+    try {
+      if (await _userRepository.signInWithApple() != null)
+        yield LoginState.success();
+    } catch (e) {
+      print("appleerror==${e}");
+      yield LoginState.failure(e);
     }
   }
 
@@ -87,9 +101,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       } else {
         yield LoginState.verifiedFailure();
       }
-    } catch (_) {
-      print("Login_Error${_}");
-      yield LoginState.failure();
+    } catch (e) {
+      print("Login_Error${e}");
+      yield LoginState.failure(e);
     }
   }
 }
