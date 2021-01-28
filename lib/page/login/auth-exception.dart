@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wisplu_ecocode/generated/l10n.dart';
+import 'package:Wisplu/generated/l10n.dart';
 
 class AuthExceptionHandler {
   static handleException(BuildContext context, e) {

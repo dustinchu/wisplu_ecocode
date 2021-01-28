@@ -74,11 +74,10 @@ class StaggerAnimation extends StatelessWidget {
                   iconStatus
                       ? Padding(
                           padding: EdgeInsets.only(left: 10, right: 10),
-                          child: Image.asset(
-                            iconPath,
-                            height: 18.0,
-                            width: 18.0,
-                          ),
+                          child: Image.asset(iconPath,
+                              height: 25
+                              // width: 20.0,
+                              ),
                         )
                       : Container(),
                   Text(

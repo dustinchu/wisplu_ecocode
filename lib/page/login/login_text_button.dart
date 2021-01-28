@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import '../../common/styles/colors.dart';
 
-class CreateAccountButton extends StatelessWidget {
+class TextBtn extends StatelessWidget {
   final GestureTapCallback onTap;
   final String text;
 
-  CreateAccountButton({Key key, @required this.onTap, @required this.text})
+  TextBtn({Key key, @required this.onTap, @required this.text})
       : super(key: key);
 
   @override

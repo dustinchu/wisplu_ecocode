@@ -57,7 +57,7 @@ class App extends StatelessWidget {
         builder: (context, localState) {
       return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Intl Example',
+        title: 'Wisplu',
         localizationsDelegates: [
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
@@ -69,8 +69,8 @@ class App extends StatelessWidget {
         locale: localState.locale,
         home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
           builder: (context, state) {
-          //  return HomeScreen();
-          //判斷認證進入畫面
+            //  return HomeScreen();
+            //判斷認證進入畫面
             if (state is AuthenticationFailure) {
               return LoginScreen(userRepository: _userRepository);
             }

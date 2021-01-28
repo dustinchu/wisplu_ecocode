@@ -1,4 +1,4 @@
-name: wisplu_ecocode
+name: Wisplu
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -47,6 +47,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
+    - assets/login_button_logo/
 
 flutter_intl:
   enabled: true

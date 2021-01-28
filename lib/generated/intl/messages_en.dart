@@ -40,6 +40,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "homeTodayMoney" : MessageLookupByLibrary.simpleMessage("今日總花費"),
     "incorrectAccount" : MessageLookupByLibrary.simpleMessage("帳號或密碼錯誤"),
     "inputAccount" : MessageLookupByLibrary.simpleMessage("請輸入帳號密碼"),
+    "loginAppleButton" : MessageLookupByLibrary.simpleMessage("Apple"),
     "loginButton" : MessageLookupByLibrary.simpleMessage("登入"),
     "loginFacebookButton" : MessageLookupByLibrary.simpleMessage("Facebook"),
     "loginFalse" : MessageLookupByLibrary.simpleMessage("登入發生錯誤"),

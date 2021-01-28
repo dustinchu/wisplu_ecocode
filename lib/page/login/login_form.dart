@@ -88,7 +88,8 @@ class _LoginFormState extends State<LoginForm>
         if (state.isFailure) {
           print(
               "ErrorCode${AuthExceptionHandler.handleException(context, state.isErrorCode)}");
-          ShowMessageDialog(context, AuthExceptionHandler.handleException(context, state.isErrorCode));
+          ShowMessageDialog(context,
+              AuthExceptionHandler.handleException(context, state.isErrorCode));
           _stopAnimation();
         }
         if (state.isSubmitting) {
@@ -113,16 +114,17 @@ class _LoginFormState extends State<LoginForm>
         ),
         child: BlocBuilder<LoginBloc, LoginState>(
           builder: (context, state) {
-            return Padding(
-              padding:
-                  EdgeInsets.only(top: 20, bottom: 20, left: 50, right: 50),
+            return Container(
+              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
               child: Form(
                 child: ListView(
                   children: <Widget>[
                     Padding(
                       padding: EdgeInsets.only(top: 10),
-                      child: Image.asset('assets/brandLogo.png',
-                          height: MediaQuery.of(context).size.width / 4 + 20),
+                      child: Image.asset(
+                        'assets/brandLogo.png',
+                        height: MediaQuery.of(context).size.width / 2 + 20,
+                      ),
                     ),
                     Center(
                       child: Text(
@@ -133,6 +135,7 @@ class _LoginFormState extends State<LoginForm>
                     SizedBox(
                       height: 30,
                     ),
+                    //信箱
                     LoginTextFormField(
                       obscureText: false,
                       keyboardType: TextInputType.emailAddress,
@@ -149,6 +152,7 @@ class _LoginFormState extends State<LoginForm>
                     SizedBox(
                       height: 20,
                     ),
+                    //密碼
                     LoginTextFormField(
                       obscureText: true,
                       keyboardType: TextInputType.visiblePassword,
@@ -162,31 +166,22 @@ class _LoginFormState extends State<LoginForm>
                             : null;
                       },
                     ),
+                    //忘記密碼
                     Padding(
                       padding: EdgeInsets.only(top: 10, bottom: 10),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          // Text(
-                          //   state.isFailure? "":S.of(context).incorrectAccount,
-                          //    style: TextStyle(color:HexColor("EF6359"),fontSize: 12),
-                          // ),
-                          InkWell(
-                            onTap: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(builder: (context) {
-                                  return ForgotPasswordScreen(
-                                      userRepository: _userRepository);
-                                }),
-                              );
-                            },
-                            child: Text(
-                              S.of(context).loginForgotPassword,
-                              style: TextStyle(color: kLoginTextColor),
-                              // style: TextStyle(
-                              //     color: Color.fromRGBO(195, 159, 43, 1)),
-                            ),
-                          )
+                          TextBtn(
+                              text: S.of(context).loginForgotPassword,
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(builder: (context) {
+                                    return ForgotPasswordScreen(
+                                        userRepository: _userRepository);
+                                  }),
+                                );
+                              }),
                         ],
                       ),
                     ),
@@ -196,7 +191,7 @@ class _LoginFormState extends State<LoginForm>
                         StaggerAnimation(
                           borderColor: Colors.white,
                           color: Colors.transparent,
-                          circular: 0,
+                          circular: 10,
                           text: S.of(context).loginButton,
                           textColor: Colors.white,
                           buttonController: _loginButtonController.view,
@@ -205,75 +200,45 @@ class _LoginFormState extends State<LoginForm>
                               ? _onFormSubmitted
                               : null,
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(top: 20, bottom: 20),
-                          child: Row(
-                            children: [
-                              Expanded(
-                                flex: 1,
-                                child: Container(
-                                  height: 0.5,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(left: 20, right: 20),
-                                child: Text(
-                                  S.of(context).loginOther,
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 15),
-                                ),
-                              ),
-                              Expanded(
-                                  flex: 1,
-                                  child: Container(
-                                    height: 0.5,
-                                    color: Colors.white,
-                                  ))
-                            ],
-                          ),
+                        rowDivider(),
+                        //Google登入
+                        StaggerAnimation(
+                          borderColor: Colors.white,
+                          color: Colors.transparent,
+                          circular: 10,
+                          text: S.of(context).loginGoogleButton,
+                          textColor: Colors.white,
+                          buttonController: _loginButtonController.view,
+                          // onTap: () async {
+                          onTap: () => BlocProvider.of<LoginBloc>(context)
+                              .add(LoginWithGooglePressed()),
+                          iconStatus: true,
+                          iconPath: "assets/login_button_logo/google.png",
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            IconButton(
-                              icon: Image.asset("assets/facebook.png"),
-                              onPressed: () => print("123"),
-                            ),
-                            IconButton(
-                                icon: Image.asset("assets/google-logo.png"),
-                                onPressed: () =>
-                                    BlocProvider.of<LoginBloc>(context)
-                                        .add(LoginWithGooglePressed())),
-                            IconButton(
-                                icon:
-                                    Image.asset("assets/apple_logo_white.png"),
-                                onPressed: () =>
-                                    BlocProvider.of<LoginBloc>(context)
-                                        .add(LoginWithApplePressed())),
-                          ],
+                        //Apple登入
+                        SizedBox(
+                          height: 20,
                         ),
-                        // GoogleLoginButton(
-                        //   text: S.of(context).loginGoogleButton,
-                        //   onTap: () {
-                        //     BlocProvider.of<LoginBloc>(context)
-                        //         .add(LoginWithGooglePressed());
-                        //   },
-                        //   buttonController: _loginButtonController.view,
-                        // ),
-                        // SizedBox(height: 10),
-                        // FacebookLoginButton(
-                        //   text: S.of(context).loginFacebookButton,
-                        //   onTap: null,
-                        //   buttonController: _loginButtonController.view,
-                        // ),
+                        StaggerAnimation(
+                          borderColor: Colors.white,
+                          color: Colors.transparent,
+                          circular: 10,
+                          text: S.of(context).loginAppleButton,
+                          textColor: Colors.white,
+                          buttonController: _loginButtonController.view,
+                          // onTap: () async {
+                          onTap: () => BlocProvider.of<LoginBloc>(context)
+                              .add(LoginWithApplePressed()),
+                          iconStatus: true,
+                          iconPath: "assets/login_button_logo/apple_white.png",
+                        ),
                         SizedBox(height: 30),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(S.of(context).loginNoAccount,
                                 style: TextStyle(color: kTextColor)),
-                            CreateAccountButton(
+                            TextBtn(
                                 text: S.of(context).loginSignIn,
                                 onTap: () {
                                   Navigator.of(context).push(
@@ -293,6 +258,37 @@ class _LoginFormState extends State<LoginForm>
             );
           },
         ),
+      ),
+    );
+  }
+
+//分隔線 使用其他方式登入
+  Widget rowDivider() {
+    return Padding(
+      padding: EdgeInsets.only(top: 20, bottom: 20),
+      child: Row(
+        children: [
+          Expanded(
+            flex: 1,
+            child: Container(
+              height: 0.5,
+              color: Colors.white,
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 20, right: 20),
+            child: Text(
+              S.of(context).loginOther,
+              style: TextStyle(color: Colors.white, fontSize: 15),
+            ),
+          ),
+          Expanded(
+              flex: 1,
+              child: Container(
+                height: 0.5,
+                color: Colors.white,
+              ))
+        ],
       ),
     );
   }

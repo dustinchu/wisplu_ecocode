@@ -135,6 +135,16 @@ class S {
     );
   }
 
+  /// `Apple`
+  String get loginAppleButton {
+    return Intl.message(
+      'Apple',
+      name: 'loginAppleButton',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Facebook`
   String get loginFacebookButton {
     return Intl.message(

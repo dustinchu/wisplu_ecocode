@@ -9,6 +9,7 @@
     "loginButton":"登入",
     "loginOther":"使用其他方式登入",
     "loginGoogleButton":"Google",
+    "loginAppleButton":"Apple",
     "loginFacebookButton":"Facebook",
     "loginForgotPassword":"忘記密碼?",
     "loginNoAccount":"沒有帳號密碼?",
