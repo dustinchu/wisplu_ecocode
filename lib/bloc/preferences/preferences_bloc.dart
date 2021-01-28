@@ -26,6 +26,7 @@ class PreferencesBloc extends Bloc<PreferencesEvent, PreferencesState> {
     PreferencesEvent event,
   ) async* {
     if (event is ChangeLocale) {
+      //觸發後儲存本地語言
       await _preferencesRepository.saveLocale(event.locale);
       yield PreferencesState(locale: event.locale);
     }

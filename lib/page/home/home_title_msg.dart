@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../common/styles/colors.dart';
-import 'tooltipShapeBorder.dart';
+import 'tooltip_shape_border.dart';
 import '../../generated/l10n.dart';
 class HomeTtileMsg extends StatelessWidget {
   final String todayMoney;

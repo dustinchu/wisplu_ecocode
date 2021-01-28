@@ -18,9 +18,11 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   BlocSupervisor.delegate = blocDelegate();
   final UserRepository userRepository = UserRepository();
+  //讀取本地儲存的語言
   final preferencesRepository = PreferencesRepositoryImpl();
   var initLocale = await preferencesRepository.locale;
   runApp(
+    //BLOC init
     MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -29,6 +31,7 @@ void main() async {
                   initialLocale: initLocale,
                 )),
         BlocProvider(
+          //認證帳號有沒有登入過
           create: (context) => AuthenticationBloc(
             userRepository: userRepository,
           )..add(AuthenticationStarted()),
@@ -67,6 +70,7 @@ class App extends StatelessWidget {
         home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
           builder: (context, state) {
           //  return HomeScreen();
+          //判斷認證進入畫面
             if (state is AuthenticationFailure) {
               return LoginScreen(userRepository: _userRepository);
             }

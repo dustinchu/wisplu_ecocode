@@ -52,7 +52,7 @@ class AuthenticationBloc
         yield AuthenticationFailure();
       }
     } catch (e) {
-      print("123213=====${e}");
+      print("Authentication=====${e}");
     }
   }
 
