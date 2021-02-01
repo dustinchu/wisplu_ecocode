@@ -23,7 +23,8 @@ class _HomeScreenState extends State<HomeScreen>
   bool _swipe = true;
   bool _tapScaffold = false;
   InnerDrawerAnimation _animationType = InnerDrawerAnimation.static;
-  double _offset = 0.4;
+  //打開剩餘寬度
+  double _offset = 0.3;
 
   double _dragUpdate = 0;
 
@@ -49,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen>
 
   @override
   Widget build(BuildContext context) {
-      final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: Colors.transparent,
@@ -69,6 +70,7 @@ class _HomeScreenState extends State<HomeScreen>
         colorTransitionScaffold: currentColor,
         leftAnimationType: _animationType,
         rightAnimationType: InnerDrawerAnimation.linear,
+        //滑動打開抽屜
         rightChild: HomeInner(
           onTap: () => _innerDrawerKey.currentState.toggle(),
           position: false,

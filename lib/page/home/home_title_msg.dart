@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../common/styles/colors.dart';
 import 'tooltip_shape_border.dart';
 import '../../generated/l10n.dart';
+
 class HomeTtileMsg extends StatelessWidget {
   final String todayMoney;
   final String marketPrice;
@@ -15,7 +16,7 @@ class HomeTtileMsg extends StatelessWidget {
       children: [
         Container(
             decoration: new BoxDecoration(
-                color: Colors.blueAccent[200],
+                color: KFocusColor,
                 borderRadius: new BorderRadius.vertical(
                   top: const Radius.circular(90.0),
                   bottom: const Radius.circular(90.0),
@@ -34,7 +35,7 @@ class HomeTtileMsg extends StatelessWidget {
             ),
             Text(
               todayMoney,
-              style: TextStyle(color: Colors.blueAccent[200], fontSize: 35),
+              style: TextStyle(color: KFocusColor, fontSize: 35),
             ),
             Text(
               S.of(context).homeTodayMoney,
@@ -47,7 +48,8 @@ class HomeTtileMsg extends StatelessWidget {
         ),
         Container(
           decoration: ShapeDecoration(
-            color: Colors.blueAccent[200],
+            // color: Colors.blueAccent[200],
+            color: KCardBarckRoundColor,
             shape: TooltipShapeBorder(arrowArc: 0.5),
             shadows: [
               BoxShadow(
@@ -58,8 +60,9 @@ class HomeTtileMsg extends StatelessWidget {
               padding: EdgeInsets.all(16.0),
               child: Column(
                 children: [
-                  Text(S.of(context).homeElectricCharge, style: TextStyle(color: kTextColor)),
-                  Text(marketPrice, style: TextStyle(color: kTextColor)),
+                  Text(S.of(context).homeElectricCharge,
+                      style: TextStyle(color: kTextColor)),
+                  Text(marketPrice, style: TextStyle(color: KFocusColor)),
                 ],
               )),
         ),

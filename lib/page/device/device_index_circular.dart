@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:wisplu_ecocode/common/styles/colors.dart';
 
 // ignore: must_be_immutable
 class IndexCircular extends StatelessWidget {
-  Color _color;
-  IndexCircular({Key key, Color color})
-      : _color = color,
+  bool _status;
+  IndexCircular({Key key, bool status})
+      : _status = status,
         super(key: key);
 
   @override
@@ -16,7 +17,7 @@ class IndexCircular extends StatelessWidget {
         child: new Container(
           width: 7.0,
           height: 7.0,
-          color: _color,
+          color: _status ? kIndexCircularOn : kIndexCircularOff,
         ),
       ),
     );

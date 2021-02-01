@@ -19,8 +19,9 @@ class OpenContainerWrapper extends StatelessWidget {
       openBuilder: (BuildContext context, VoidCallback _) {
         return openWidget;
       },
+      closedElevation:0,
       closedColor: Colors.transparent,
-      openColor: Colors.blueAccent,
+      // openColor: Colors.blueAccent,
       onClosed: onClosed,
       tappable: false,
       closedBuilder: closedBuilder,

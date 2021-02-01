@@ -1,6 +1,6 @@
 import 'package:animations/animations.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:wisplu_ecocode/common/styles/colors.dart';
 import '../../page/device/device_screen.dart';
 import '../../common/animation/openContainerBuilder.dart';
 import '../../page/home/home_appbar.dart';
@@ -43,6 +43,24 @@ List<Widget> listviewDemo = <Widget>[
     positionName: "浴室",
     switchTotleMoney: "1029.48",
   ),
+  HomeListViewCard(
+    switchStatus: false,
+    iconPath: "assets/bathroom.png",
+    positionName: "浴室",
+    switchTotleMoney: "1029.48",
+  ),
+  HomeListViewCard(
+    switchStatus: false,
+    iconPath: "assets/bathroom.png",
+    positionName: "浴室",
+    switchTotleMoney: "1029.48",
+  ),
+  HomeListViewCard(
+    switchStatus: false,
+    iconPath: "assets/bathroom.png",
+    positionName: "浴室",
+    switchTotleMoney: "1029.48",
+  ),
 ];
 
 class _HomeFormState extends State<HomeForm> {
@@ -50,7 +68,8 @@ class _HomeFormState extends State<HomeForm> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 20, bottom: 20, left: 20, right: 20),
+      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+      // color:  Color(0xFF444974),
       decoration: BoxDecoration(
         gradient: kScaffoldBackgroundGradient,
       ),
@@ -58,29 +77,30 @@ class _HomeFormState extends State<HomeForm> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            height: 10,
+            height: 20,
           ),
           HomeAppbar(
             text: S.of(context).homeAppbar,
             onPressed: widget.appbarCallback,
           ),
           SizedBox(
-            height: 40,
+            height: 30,
           ),
           HomeTtileMsg(todayMoney: "12345.99", marketPrice: "22.5"),
           Padding(
             padding: EdgeInsets.only(left: 3, top: 30, bottom: 10),
             child: Text(S.of(context).homeDerive,
-                style: TextStyle(color: Colors.white24, fontSize: 20)),
+                style: TextStyle(color: kSubTextColor, fontSize: 20)),
           ),
           Expanded(
             child: ListView.builder(
               padding: EdgeInsets.only(top: 0),
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
-              itemCount: 4,
+              itemCount: listviewDemo.length,
               itemBuilder: (context, position) {
                 // return listviewDemo[position];
+                // listview打開動畫
                 return OpenContainerWrapper(
                   transitionType: _transitionType,
                   closedBuilder: (BuildContext _, VoidCallback openContainer) {

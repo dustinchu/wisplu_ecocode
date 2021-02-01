@@ -13,7 +13,7 @@ class TextBtn extends StatelessWidget {
     return InkWell(
       child: Text(
         text,
-        style: TextStyle(color: kLoginTextColor),
+        style: TextStyle(color: kLoginBtnTextColor),
       ),
       onTap: onTap,
     );
